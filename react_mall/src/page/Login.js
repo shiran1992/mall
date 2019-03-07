@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
-import { Row, Col, Menu, Icon, Button, Input } from 'antd';
-import { Slider } from 'antd';
+import { message, Icon, Button, Input } from 'antd';
+import API from "../utils/API";
 
 
 class Login extends Component {
@@ -17,8 +17,8 @@ class Login extends Component {
         this.setState({ userName: '' });
     }
 
-    onChangeUserName(e) {
-        this.setState({ userName: e.target.value });
+    onChangePassword(e) {
+        this.setState({ pwd: e.target.value });
     }
 
     render() {
@@ -41,16 +41,14 @@ class Login extends Component {
                                     placeholder="手机号"
                                     prefix={<Icon type="user" style={{ color: 'rgba(0,0,0,.25)' }} />}
                                     suffix={suffix}
-                                    value={userName}
-                                    onChange={this.onChangeUserName}
                                     ref={node => this.userNameInput = node}
                                 />
                             </div>
                             <div style={{ display: 'flex', alignItems: 'center', marginTop: 20, width: 250, height: 50, }}>
-                                <Input.Password placeholder="密码" />
+                                <Input.Password placeholder="密码" onChange={(e) => { this.onChangePassword(e); }} />
                             </div>
                             <div style={{ marginTop: 40 }}>
-                                <Button type="primary" block>登录</Button>
+                                <Button type="primary" block onClick={() => { this.onClickLogin(); }}>登录</Button>
                             </div>
                             <span className="small-text" style={{ float: "right", marginTop: 10, }} onClick={() => { this.routerTo(); }}>
                                 注册
@@ -78,6 +76,28 @@ class Login extends Component {
     //点击注册
     routerTo(v) {
         this.props.history.push({ pathname: `/register`, state: { data: v } })
+    }
+
+    //点击登录
+    async onClickLogin() {
+        if(!this.userNameInput.state.value){
+            message.error("手机号码不可以为空哦~");
+            return;
+        } 
+        if(!this.state.pwd){
+            message.error("密码不可以为空哦~");
+            return;
+        } 
+        let data = await API("LoginServlet", {
+            phone: this.userNameInput.state.value,
+            password: this.state.pwd
+        }, { method: "get" });
+        if (data && data != "false") {
+            console.log(data);
+            localStorage.setItem('phone', this.userNameInput.state.value)
+        } else {
+            message.error("账号或者密码错误！")
+        }
     }
 }
 

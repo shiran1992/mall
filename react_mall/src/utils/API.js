@@ -1,5 +1,6 @@
 import axios from 'axios';
 import qs from 'qs';
+import BaseConfig from "../config/BaseConfig";
 
 const fetch = (
     url,
@@ -15,7 +16,7 @@ const fetch = (
 
     return axios({
         method: _options.method,
-        url: url,
+        url: BaseConfig.baseUrl + url,
         params: _params,
         data: qs.stringify(_data),
         withCredentials: _options.withCredentials

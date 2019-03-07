@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
-import { Row, Col, Menu, Icon, Button, Input } from 'antd';
-import { Slider } from 'antd';
+import { message, Button, Input } from 'antd';
+import API from "../utils/API";
 
 
 class Register extends Component {
@@ -13,8 +13,12 @@ class Register extends Component {
         };
     }
 
-    onChangeUserName = (e) => {
-        this.setState({ userName: e.target.value });
+    onChangePassword(e) {
+        this.setState({ pwd: e.target.value });
+    }
+
+    onChangePassword1(e) {
+        this.setState({ _pwd: e.target.value });
     }
 
     render() {
@@ -32,16 +36,16 @@ class Register extends Component {
                         <div className="login-box-warp">
                             <div className="login-title">注册</div>
                             <div style={{ display: 'flex', alignItems: 'center', marginTop: 20, width: 250, height: 50, }}>
-                                <Input placeholder="手机号" value={phone} />
+                                <Input placeholder="手机号" ref={node => this.phone = node} />
                             </div>
                             <div style={{ display: 'flex', alignItems: 'center', marginTop: 10, width: 250, height: 50, }}>
-                                <Input.Password placeholder="密码" />
+                                <Input.Password placeholder="密码" onChange={(e) => { this.onChangePassword(e); }} />
                             </div>
                             <div style={{ display: 'flex', alignItems: 'center', marginTop: 10, width: 250, height: 50, }}>
-                                <Input.Password placeholder="确认密码" />
+                                <Input.Password placeholder="确认密码" onChange={(e) => { this.onChangePassword1(e); }} />
                             </div>
                             <div style={{ marginTop: 40 }}>
-                                <Button type="primary" block>提交</Button>
+                                <Button type="primary" block onClick={() => { this.onClickSubmit(); }}>提交</Button>
                             </div>
                         </div>
 
@@ -61,6 +65,31 @@ class Register extends Component {
                 </div>
             </div>
         )
+    }
+
+    async onClickSubmit() {
+        if (!this.phone.state.value) {
+            message.error("手机号码不可以为空哦~");
+            return;
+        }
+        if (!this.state.pwd || !this.state._pwd) {
+            message.error("密码或确认密码不可以为空哦~");
+            return;
+        }
+        if (this.state.pwd == this.state._pwd) {
+            let data = await API("RegisterServlet", {
+                phone: this.phone.state.value,
+                password: this.state.pwd
+            }, { method: "get" });
+            if (data && data != "false") {
+                console.log(data);
+                
+            } else {
+                message.error("此号码已注册！")
+            }
+        } else {
+            message.error("密码和确认密码不相同~");
+        }
     }
 }
 
