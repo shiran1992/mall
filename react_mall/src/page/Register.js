@@ -27,7 +27,7 @@ class Register extends Component {
             <div style={{ margin: "0 auto", overflow: "hidden" }}>
                 <div id="header">
                     <div className="logo">
-                        <h1>1111</h1>
+                        <h1>电脑配件城</h1>
                     </div>
                 </div>
                 <div id="content">
@@ -35,16 +35,22 @@ class Register extends Component {
                     <div className="content-layout">
                         <div className="login-box-warp">
                             <div className="login-title">注册</div>
-                            <div style={{ display: 'flex', alignItems: 'center', marginTop: 20, width: 250, height: 50, }}>
+                            <div style={{ display: 'flex', alignItems: 'center', marginTop: 10, width: 250,  }}>
                                 <Input placeholder="手机号" ref={node => this.phone = node} />
                             </div>
-                            <div style={{ display: 'flex', alignItems: 'center', marginTop: 10, width: 250, height: 50, }}>
+                            <div style={{ display: 'flex', alignItems: 'center', marginTop: 20, width: 250, }}>
+                                <Input placeholder="昵称" ref={node => this.name = node} />
+                            </div>
+                            <div style={{ display: 'flex', alignItems: 'center', marginTop: 20, width: 250, }}>
                                 <Input.Password placeholder="密码" onChange={(e) => { this.onChangePassword(e); }} />
                             </div>
-                            <div style={{ display: 'flex', alignItems: 'center', marginTop: 10, width: 250, height: 50, }}>
+                            <div style={{ display: 'flex', alignItems: 'center', marginTop: 20, width: 250, }}>
                                 <Input.Password placeholder="确认密码" onChange={(e) => { this.onChangePassword1(e); }} />
                             </div>
-                            <div style={{ marginTop: 40 }}>
+                            <span className="small-text" style={{ float: "right", marginTop: 10}} onClick={() => { this.routerTo(); }}>
+                                登录
+                            </span>
+                            <div style={{ marginTop: 30 }}>
                                 <Button type="primary" block onClick={() => { this.onClickSubmit(); }}>提交</Button>
                             </div>
                         </div>
@@ -67,9 +73,18 @@ class Register extends Component {
         )
     }
 
+    //点击登陸
+    routerTo(v) {
+        this.props.history.push({ pathname: `/login`, state: { data: v } });
+    }
+
     async onClickSubmit() {
         if (!this.phone.state.value) {
             message.error("手机号码不可以为空哦~");
+            return;
+        }
+        if (!this.name.state.value) {
+            message.error("昵称不可以为空哦~");
             return;
         }
         if (!this.state.pwd || !this.state._pwd) {
@@ -79,11 +94,12 @@ class Register extends Component {
         if (this.state.pwd == this.state._pwd) {
             let data = await API("RegisterServlet", {
                 phone: this.phone.state.value,
+                name: this.name.state.value,
                 password: this.state.pwd
             }, { method: "get" });
             if (data && data != "false") {
                 console.log(data);
-                
+                this.routerTo();
             } else {
                 message.error("此号码已注册！")
             }

@@ -28,7 +28,7 @@ class Login extends Component {
             <div style={{ margin: "0 auto", overflow: "hidden" }}>
                 <div id="header">
                     <div className="logo">
-                        <h1>1111</h1>
+                        <h1>电脑配件城</h1>
                     </div>
                 </div>
                 <div id="content">
@@ -75,7 +75,7 @@ class Login extends Component {
 
     //点击注册
     routerTo(v) {
-        this.props.history.push({ pathname: `/register`, state: { data: v } })
+        this.props.history.push({ pathname: `/register`, state: { data: v } });
     }
 
     //点击登录
@@ -83,7 +83,7 @@ class Login extends Component {
         if(!this.userNameInput.state.value){
             message.error("手机号码不可以为空哦~");
             return;
-        } 
+        }
         if(!this.state.pwd){
             message.error("密码不可以为空哦~");
             return;
@@ -94,7 +94,8 @@ class Login extends Component {
         }, { method: "get" });
         if (data && data != "false") {
             console.log(data);
-            localStorage.setItem('phone', this.userNameInput.state.value)
+            localStorage.setItem('userinfo', JSON.stringify(data));
+            this.props.history.push({ pathname: `/`, state: { } });
         } else {
             message.error("账号或者密码错误！")
         }
