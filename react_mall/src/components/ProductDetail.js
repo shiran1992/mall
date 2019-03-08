@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import axios from 'axios';
 import { connect } from 'react-redux';
 import { productDetails, addToCart } from '../actions';
 import { NavLink } from 'react-router-dom';
@@ -35,10 +34,15 @@ class ProductDetail extends Component {
     var carUrl = '/carts';
     var homeUrl = '/';
     return (
-      <Card style={{ width: "1000px", margin: "0 auto", border: "2px solid #ccc", fontFamily: 'Microsoft YaHei', overflow: "hidden", position: "relative", padding: "20px" }}>
+      <Card style={{ width: "80%", margin: "0 auto", border: "1px solid #eee", fontFamily: 'Microsoft YaHei', overflow: "hidden", position: "relative", padding: "20px" }}>
         <CardImg top style={{ width: '45%', float: "left" }} src={data.img} />
         <CardBody style={{ width: '52%', position: "absolute", right: "0", top: "0" }}>
-          <CardTitle style={{ height: "90px", overflow: 'hidden', lineHeight: "35px", margin: '10px 0 0 0' }}>{data.title}</CardTitle>
+          <CardTitle style={{ fontSize: 20, marginTop: 10, fontWeight: 700 }}>{data.title}</CardTitle>
+          <div className="price-bg">
+            <div className="price-head">
+              <span style={{color: 'white', fontSize: 12}}>活动中,尽快购买哦~</span>
+            </div>
+          </div>
           <CardSubtitle style={{ color: "red", lineHeight: '18px', margin: '-6px 0 18px 0' }}>单价：${data.price}</CardSubtitle>
           <CardText style={{ fontSize: '14px', color: '#666', lineHeight: '28px' }}>{data.content}</CardText>
           <CardSubtitle style={{ lineHeight: '22px', color: "#888", margin: '-6px 0 18px 0' }}>上架时间：{data.time}</CardSubtitle>
