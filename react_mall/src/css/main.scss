@@ -108,3 +108,17 @@
 .small-text:hover{
     color: deepskyblue;
 }
+
+.shop-card{
+    width: 300px;
+    height: 400px;
+    margin: 10px;
+    border: 2px solid #ccc;
+    float: left;
+    font-family: Microsoft YaHei;
+    cursor: pointer
+}
+
+.shop-card：hover{
+    border: 2px solid #F74;
+}

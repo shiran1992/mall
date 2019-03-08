@@ -87,20 +87,21 @@ class Home extends Component {
       var jsx = [];
       var carUrl = '/carts';
       for (let i = 0; i < lstlen; i++) {
-        var detaiUrl = '/product/' + lst[i].id;
         jsx.push(
-          <Card style={{ width: "23%", height: "400px", margin: "12px", border: "2px solid #ccc", float: 'left', fontFamily: 'Microsoft YaHei' }} key={i}>
+          <div className="shop-card"
+            key={i} onClick={() => { this.routerTo(lst[i].id); }}>
             <CardImg top style={{ width: '100%' }} src={lst[i].img} />
             <CardBody>
-              <CardTitle style={{ width: '100%', height: "48px", overflow: 'hidden', margin: '-6px 0 6px 0' }}>{lst[i].title}</CardTitle>
-              <CardSubtitle style={{ width: '100%', color: "red", lineHeight: '18px', margin: '-6px 0 6px 0' }}>单价：{lst[i].price}元</CardSubtitle>
-              <CardText style={{ width: '100%', height: "36px", overflow: 'hidden', fontSize: '14px', color: '#666', lineHeight: '18px' }}>{lst[i].content}</CardText>
-              <NavLink to={detaiUrl}>产品详情</NavLink>
-              <Button onClick={() => this.addToCarts(lst[i])} size="sm" style={{ margin: "0 10px" }}>加入购物车</Button>
-              <NavLink to={carUrl}>去付款</NavLink>
+              <div style={{display: 'flex', alignItems: 'center'}}>
+                <span style={{ color: '#F40', fontWeight: 700, fontFamily: 'arial' }}>单价：{lst[i].price}元</span>
+                <span style={{backgroundColor: '#F40', color: 'white', fontSize: 12, marginLeft: 10, padding: '0 5px'}}>包邮</span>
+                <div style={{flex: 1}}/>
+                <span style={{fontSize: 12}}>121人已付款</span>
+              </div>
+              <span style={{ color: '#3d3d3d', width: '100%', marginTop: 20 }}>{lst[i].title}</span>
             </CardBody>
-          </Card>
-        )
+          </div>
+        );
       }
       return jsx;
     } else {
@@ -119,6 +120,11 @@ class Home extends Component {
         </div>
       </div>
     )
+  }
+
+  //点击商品
+  routerTo(id) {
+    this.props.history.push({ pathname: '/product/' + id, state: {} });
   }
 }
 
