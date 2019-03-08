@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import { message, Icon, Button, Input } from 'antd';
 import API from "../utils/API";
 
-
 class Login extends Component {
     constructor(props) {
         super(props);
