@@ -28,7 +28,7 @@ class Index extends React.Component {
                         <Route path="/new/:id" component={NewDetail} />
                         <Route path="/about" component={About} />
                         <Route path="/product/:id" component={ProductDetail} />
-                        <Route path="/product" component={Product} />
+                        <Route path="/products" component={Product} />
                         <Route path="/carts" component={Carts} />
                         <Route path="/counter" component={Counter} />
                     <Footer />

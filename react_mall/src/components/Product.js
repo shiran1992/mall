@@ -67,7 +67,7 @@ class Product extends Component{
       const {rows,total} = this.props;
     return (
       <div>
-        Product
+        Product-----
         <hr/>
         <nav aria-label="Page navigation example" style={{width:"1170px",margin:"0 auto"}}>
               <ul className="pagination">

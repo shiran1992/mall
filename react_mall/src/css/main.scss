@@ -113,6 +113,8 @@
     background-image: url(../img/price_bg.png);
     width: 520px;
     height: 198px;
+    display: flex;
+    flex-direction: column;
 }
 
 .price-head {
