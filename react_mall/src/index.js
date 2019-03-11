@@ -13,9 +13,12 @@ import Register from "./page/Register";
 import About from "./page/About";
 import ProductDetail from "./page/ProductDetail";
 import ProductList from "./page/ProductList";
-import Carts from "./page/Carts";
-
-import { HashRouter as Router, Route, Switch } from 'react-router-dom'
+import CarList from "./page/CarList";
+import InputOrder from "./page/InputOrder";
+import Payment from "./page/Payment";
+import OrderList from "./page/OrderList";
+import OrderDetail from './page/OrderDetail';
+import { HashRouter as Router, Route, Switch } from 'react-router-dom';
 
 class Index extends React.Component {
 
@@ -31,7 +34,11 @@ class Index extends React.Component {
                         <Route path="/about" component={About} />
                         <Route path="/product/:id" component={ProductDetail} />
                         <Route path="/products" component={ProductList} />
-                        <Route path="/carts" component={Carts} />
+                        <Route path="/carts" component={CarList} />
+                        <Route path="/input/:id" component={InputOrder} />
+                        <Route path="/pay/:id" component={Payment} />
+                        <Route path="/orders" component={OrderList} />
+                        <Route path="/orderInfo/:id" component={OrderDetail} />
                         <Footer />
                     </div>
                 </Switch>

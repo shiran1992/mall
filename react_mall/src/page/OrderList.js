@@ -11,7 +11,7 @@ const mapStateToProps = (state) => {
   }
 }
 
-class Carts extends Component {
+class OrderList extends Component {
   constructor(props) {
     super(props);
     this.state = { value: [] };
@@ -114,10 +114,14 @@ class Carts extends Component {
                   <span style={{ backgroundColor: '#F40', color: 'white', fontSize: 12, marginLeft: 10, padding: '0 5px' }}>包邮</span>
                   <span style={{ fontSize: 12, marginLeft: 30 }}>121人已付款</span>
                 </div>
+                <span style={{ marginTop: 10, fontSize: 12, marginLeft: 10 }}>2019-03-09 12:28:36</span>
               </div>
             </div>
             <div style={{ flex: 1 }} />
-            <Button type="danger" block onClick={() => this.addToCarts(data)} style={{ width: 100, marginLeft: 50 }}>去付款</Button>
+            <div style={{display: 'flex', flexDirection: 'column'}}>
+              <span style={{ fontSize: 18, fontWeight: 700, marginBottom: 20 }}>交易成功</span>
+              <span className="small-text" onClick={()=>{this.routerTo();}}>查看订单</span>
+            </div>
           </div>
         </Card>
       );
@@ -133,6 +137,11 @@ class Carts extends Component {
       </div>
     )
   }
+
+  //点击付款
+  routerTo(id) {
+    this.props.history.push({ pathname: '/orderInfo/' + id, state: {} });
+  }
 }
 
-export default connect(mapStateToProps)(Carts);
+export default connect(mapStateToProps)(OrderList);
