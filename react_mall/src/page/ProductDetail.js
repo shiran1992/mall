@@ -17,11 +17,12 @@ class ProductDetail extends Component {
     this.props.productDetails({ productId });
   }
 
-  addToCarts = (product) => {
+  addToCarts(product) {
     this.props.addToCart(product)
   }
 
-  show() {
+  //渲染基础信息
+  renderInfo() {
     var data = this.props.rows;
     data = {
       img: "https://img1.360buyimg.com/pop/jfs/t1/10125/1/9402/107191/5c419222E3b8b26dd/e7994eb9583e6166.jpg",
@@ -31,7 +32,7 @@ class ProductDetail extends Component {
       content: "众所周知一款车的外观对于一款，消费者所想要的是一款内外兼修的汽车",
     };
     return (
-      <Card style={{ width: "90%", margin: "0 auto", border: "1px solid #eee", fontFamily: 'Microsoft YaHei', overflow: "hidden", position: "relative", padding: "20px" }}>
+      <Card style={{ width: "60%", margin: "0 auto", border: "1px solid #eee", fontFamily: 'Microsoft YaHei', overflow: "hidden", position: "relative", padding: "20px" }}>
         <CardImg top style={{ width: '45%', float: "left" }} src={data.img} />
         <CardBody style={{ width: '52%', position: "absolute", right: "0", top: "0" }}>
           <CardTitle style={{ fontSize: 20, marginTop: 10, fontWeight: 700 }}>{data.title}</CardTitle>
@@ -47,12 +48,29 @@ class ProductDetail extends Component {
           <CardText style={{ fontSize: '14px', color: '#666', lineHeight: '28px' }}>{data.content}</CardText>
           <CardSubtitle style={{ lineHeight: '22px', color: "#888", margin: '-6px 0 18px 0' }}>上架时间：{data.time}</CardSubtitle>
           <div style={{ display: 'flex' }}>
-            <Button type="primary" block onClick={() => this.addToCarts(data)} size="sm" style={{ width: 100 }}>加入购物车</Button>
-            <Button type="danger" block onClick={() => this.addToCarts(data)} size="sm" style={{ width: 100, marginLeft: 50 }}>去付款</Button>
+            <Button type="primary" block onClick={() => this.addToCarts(data)} style={{ width: 100 }}>加入购物车</Button>
+            <Button type="danger" block onClick={() => this.addToCarts(data)} style={{ width: 100, marginLeft: 50 }}>去付款</Button>
           </div>
         </CardBody>
       </Card >
     );
+  }
+
+  //渲染详情图片
+  renderDetailImgs() {
+    let imgUrls = [
+      "/src/img/detail_004.jpg",
+      "/src/img/detail_005.jpg",
+      "/src/img/detail_006.jpg",
+      "/src/img/detail_007.jpg",
+      "/src/img/detail_008.jpg",
+    ];
+    let imgs = imgUrls.map((e, i) => {
+      return (
+        <img src={e} />
+      );
+    })
+    return imgs;
   }
 
   render() {
@@ -60,9 +78,12 @@ class ProductDetail extends Component {
     const { rows, total } = this.props;
     return (
       <div style={{ margin: "40px 0" }}>
-        {this.show()}
-        <div style={{backgroundColor: 'red', width: "90%", margin: "40px auto"}}>
-          111111
+        {this.renderInfo()}
+        <div style={{ backgroundColor: 'red', width: "50%", margin: "40px auto", display: 'flex', flexDirection: 'column' }}>
+          <img src="/src/img/detail_head.jpg" />
+          <img src="/src/img/detail_001.jpg" />
+          {this.renderDetailImgs()}
+          <img src="/src/img/detail_003.jpg" />
         </div>
       </div>
     )

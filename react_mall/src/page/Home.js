@@ -1,10 +1,8 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { addToCart } from '../actions';
-import { UncontrolledCarousel } from 'reactstrap';
-import { message, Icon, Button, Card } from 'antd';
+import { UncontrolledCarousel, Card, CardImg } from 'reactstrap';
 import API from "../utils/API";
-const { Meta } = Card;
 
 const mapStateToProps = (state) => {
   return {
@@ -73,6 +71,24 @@ class Home extends Component {
             title: "飞利浦macbookpro ",
             price: 800.00,
             content: "众所周知一款车的外观对于一款车的销量的影响是何其的重要。但是，在今天竞争如此激烈的汽车市场上仅仅只是有出色的外观是不够的，消费者所想要的是一款内外兼修的汽车",
+          },
+          {
+            img: "https://img1.360buyimg.com/pop/jfs/t1/10125/1/9402/107191/5c419222E3b8b26dd/e7994eb9583e6166.jpg",
+            title: "飞利浦macbookpro ",
+            price: 800.00,
+            content: "众所周知一款车的外观对于一款车的销量的影响是何其的重要。但是，在今天竞争如此激烈的汽车市场上仅仅只是有出色的外观是不够的，消费者所想要的是一款内外兼修的汽车",
+          },
+          {
+            img: "https://img1.360buyimg.com/pop/jfs/t1/10125/1/9402/107191/5c419222E3b8b26dd/e7994eb9583e6166.jpg",
+            title: "飞利浦macbookpro ",
+            price: 800.00,
+            content: "众所周知一款车的外观对于一款车的销量的影响是何其的重要。但是，在今天竞争如此激烈的汽车市场上仅仅只是有出色的外观是不够的，消费者所想要的是一款内外兼修的汽车",
+          },
+          {
+            img: "https://img1.360buyimg.com/pop/jfs/t1/10125/1/9402/107191/5c419222E3b8b26dd/e7994eb9583e6166.jpg",
+            title: "飞利浦macbookpro ",
+            price: 800.00,
+            content: "众所周知一款车的外观对于一款车的销量的影响是何其的重要。但是，在今天竞争如此激烈的汽车市场上仅仅只是有出色的外观是不够的，消费者所想要的是一款内外兼修的汽车",
           }
         ]
       })
@@ -87,19 +103,18 @@ class Home extends Component {
       var jsx = [];
       for (let i = 0; i < lstlen; i++) {
         jsx.push(
-          <Card
-            hoverable
-            style={{ width: 300, marginRight: 15 }}
-            cover={<img alt="example" src={lst[i].img} />}
-            onClick={()=>{this.routerTo(lst[i].id);}}
-          >
-            <div style={{ display: 'flex', alignItems: 'center' }}>
+          <Card style={{ width: "23%", height: "350px", margin: "12px", border: "1px solid #ccc", float: 'left', fontFamily: 'Microsoft YaHei', cursor: 'pointer' }}
+            key={i} onClick={() => {
+              this.routerTo();
+            }}>
+            <CardImg top style={{ width: '100%' }} src={lst[i].img} />
+            <div style={{ display: 'flex', alignItems: 'center', marginTop: 20, padding: '0 10px' }}>
               <span style={{ color: '#F40', fontWeight: 700, fontFamily: 'arial' }}>单价：{lst[i].price}元</span>
               <span style={{ backgroundColor: '#F40', color: 'white', fontSize: 12, marginLeft: 10, padding: '0 5px' }}>包邮</span>
               <div style={{ flex: 1 }} />
               <span style={{ fontSize: 12 }}>121人已付款</span>
             </div>
-            <span style={{ color: '#3d3d3d', width: '100%', marginTop: 20 }}>{lst[i].title}</span>
+            <span style={{ color: '#3d3d3d', width: '100%', padding: 10 }}>{lst[i].title}</span>
           </Card>
         );
       }
@@ -114,7 +129,7 @@ class Home extends Component {
         <div style={{ width: "1200px", margin: "30px auto", overflow: "hidden" }}>
           <div>
             <h3>最新商品</h3>
-            <div style={{ display: 'flex' }}>
+            <div style={{ width: "1200px", margin: "0 auto", overflow: "hidden" }}>
               {this.renderShopList()}
             </div>
           </div>

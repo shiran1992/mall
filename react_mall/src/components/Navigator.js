@@ -44,13 +44,13 @@ export default class Navigator extends Component {
                 <NLink to="/" exact>首页</NLink>
               </NavItem>
               <NavItem style={style}>
-                <NLink to="/product">产品中心</NLink>
-              </NavItem>
-              <NavItem style={style}>
-                <NLink to="/about">关于我们</NLink>
+                <NLink to="/products">产品中心</NLink>
               </NavItem>
               <NavItem style={style}>
                 <NLink to="/carts">购物车</NLink>
+              </NavItem>
+              <NavItem style={style}>
+                <NLink to="/about">关于我们</NLink>
               </NavItem>
               <NavItem style={style}>
                 <NLink to="/login">登录</NLink>
