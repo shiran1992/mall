@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import { productDetails, addToCart } from '../actions';
 import { NavLink } from 'react-router-dom';
 import { Card, CardImg, CardText, CardBody, CardTitle, CardSubtitle } from 'reactstrap';
-import { message, Button } from 'antd';
+import { message, Button, Timeline } from 'antd';
 
 const mapStateToProps = (state) => {
   return {
@@ -33,8 +33,21 @@ class OrderDetail extends Component {
     };
     return (
       <Card style={{ width: "60%", margin: "0 auto", border: "1px solid #eee", fontFamily: 'Microsoft YaHei', overflow: "hidden", position: "relative", padding: "20px" }}>
-        <CardImg top style={{ width: '45%', float: "left" }} src={data.img} />
-        <CardBody style={{ width: '52%', position: "absolute", right: "0", top: "0" }}>
+        <Timeline>
+          <Timeline.Item color="green">Create a services site 2015-09-01</Timeline.Item>
+          <Timeline.Item color="green">Create a services site 2015-09-01</Timeline.Item>
+          <Timeline.Item color="red">
+            <p>Solve initial network problems 1</p>
+            <p>Solve initial network problems 2</p>
+            <p>Solve initial network problems 3 2015-09-01</p>
+          </Timeline.Item>
+          <Timeline.Item>
+            <p>Technical testing 1</p>
+            <p>Technical testing 2</p>
+            <p>Technical testing 3 2015-09-01</p>
+          </Timeline.Item>
+        </Timeline>
+        <CardBody style={{ position: "absolute", right: "0", top: "0" }}>
           <CardTitle style={{ fontSize: 20, marginTop: 10, fontWeight: 700 }}>{data.title}</CardTitle>
           <div className="price-bg">
             <div className="price-head">
@@ -45,45 +58,43 @@ class OrderDetail extends Component {
               <span style={{ fontSize: 12 }}>121人已付款</span>
             </div>
           </div>
-          <CardText style={{ fontSize: '14px', color: '#666', lineHeight: '28px' }}>{data.content}</CardText>
-          <CardSubtitle style={{ lineHeight: '22px', color: "#888", margin: '-6px 0 18px 0' }}>上架时间：{data.time}</CardSubtitle>
-          <div style={{ display: 'flex' }}>
-            <Button type="primary" block onClick={() => this.addToCarts(data)} style={{ width: 100 }}>加入购物车</Button>
-            <Button type="danger" block onClick={() => this.addToCarts(data)} style={{ width: 100, marginLeft: 50 }}>去付款</Button>
-          </div>
+          <CardText style={{ fontSize: '14px', color: '#666', lineHeight: '28px' }}>收货地址：</CardText>
+          <CardText style={{ fontSize: '14px', color: '#666', lineHeight: '28px' }}>收货地址：</CardText>
         </CardBody>
       </Card >
     );
   }
 
-  //渲染详情图片
-  renderDetailImgs() {
-    let imgUrls = [
-      "/src/img/detail_004.jpg",
-      "/src/img/detail_005.jpg",
-      "/src/img/detail_006.jpg",
-      "/src/img/detail_007.jpg",
-      "/src/img/detail_008.jpg",
-    ];
-    let imgs = imgUrls.map((e, i) => {
-      return (
-        <img src={e} />
-      );
-    })
-    return imgs;
-  }
-
   render() {
-    // const {lists} = this.props;
-    const { rows, total } = this.props;
+    let data = {
+      img: "https://img1.360buyimg.com/pop/jfs/t1/10125/1/9402/107191/5c419222E3b8b26dd/e7994eb9583e6166.jpg",
+      title: "飞利浦macbookpro转接口苹果电脑转换器typec拓展坞",
+      price: 800.00,
+      time: '2019-01-01',
+      content: "众所周知一款车的外观对于一款，消费者所想要的是一款内外兼修的汽车",
+    };
     return (
-      <div style={{ margin: "40px 0" }}>
+      <div style={{ margin: "40px 0", minHeight: '80vh' }}>
         {this.renderInfo()}
-        <div style={{ backgroundColor: 'red', width: "50%", margin: "40px auto", display: 'flex', flexDirection: 'column' }}>
-          <img src="/src/img/detail_head.jpg" />
-          <img src="/src/img/detail_001.jpg" />
-          {this.renderDetailImgs()}
-          <img src="/src/img/detail_003.jpg" />
+        <div style={{ display: 'flex', width: '100%', justifyContent: 'center', marginTop: 10 }}>
+          <Card style={{ width: "60%", margin: "0 auto", border: "1px solid #ccc", float: 'left', fontFamily: 'Microsoft YaHei' }}
+            onClick={() => {
+              this.routerTo();
+            }}>
+            <div style={{ display: 'flex', alignItems: 'center', padding: 10 }}>
+              <div>
+                <div style={{ marginTop: 10 }}>
+                  <img style={{ height: 50, width: 50, marginLeft: 10 }} src={data.img} />
+                  <span style={{ marginTop: 10, fontSize: 12, marginLeft: 10 }}>2019-03-09 12:28:36</span>
+                </div>
+              </div>
+              <div style={{ flex: 1 }} />
+              <div style={{ display: 'flex', flexDirection: 'column' }}>
+                <span style={{ fontSize: 18, fontWeight: 700, marginBottom: 20 }}>交易成功</span>
+                <span>实付款：<span style={{ fontSize: 18, fontWeight: 500 }}>89.00</span></span>
+              </div>
+            </div>
+          </Card>
         </div>
       </div>
     )
