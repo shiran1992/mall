@@ -94,10 +94,13 @@
 							<a href="/Mall/ListUserServlet" class="active">用户列表</a>
 						</dd>
 						<dd>
-							<a href="/Mall/ListServersServlet" class="active">服务列表</a>
+							<a href="/Mall/ListShopsServlet" class="active">商品列表</a>
 						</dd>
 						<dd>
-							<a href="/Mall/ListCleanersServlet" class="active">员工列表</a>
+							<a href="/Mall/ListCleanersServlet" class="active">推荐商品</a>
+						</dd>
+						<dd>
+							<a href="/Mall/ListCleanersServlet" class="active">热门商品</a>
 						</dd>
 						<dd>
 							<a href="/Mall/ListOrdersServlet" class="active">订单列表</a>

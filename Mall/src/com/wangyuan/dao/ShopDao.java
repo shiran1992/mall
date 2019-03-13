@@ -35,10 +35,11 @@ public class ShopDao {
 				shop.setTitle(rs.getString("title"));
 				shop.setHead(rs.getString("head"));
 				shop.setPrice(rs.getString("price"));
-				shop.setDesc(rs.getString("desc"));
+				shop.setIntro(rs.getString("intro"));
 				shop.setImgs(rs.getString("imgs"));
 				shop.setNum(rs.getInt("num"));
 				shop.setTime(rs.getString("time"));
+				shop.setVideo(rs.getString("video"));
 			}
 		} catch (Exception e) {
 			// 一定要处理异常，异常的信息要存在日志文件
@@ -83,10 +84,11 @@ public class ShopDao {
 				shop.setTitle(rs.getString("title"));
 				shop.setHead(rs.getString("head"));
 				shop.setPrice(rs.getString("price"));
-				shop.setDesc(rs.getString("desc"));
+				shop.setIntro(rs.getString("intro"));
 				shop.setImgs(rs.getString("imgs"));
 				shop.setNum(rs.getInt("num"));
 				shop.setTime(rs.getString("time"));
+				shop.setVideo(rs.getString("video"));
 				shops.add(shop);
 			}
 		} catch (Exception e) {
@@ -109,7 +111,7 @@ public class ShopDao {
 		return shops;
 	}
 
-	// 创建服务
+	// 创建
 	public boolean save(Shop shop) {
 		Connection conn = null;
 		PreparedStatement prep = null;
@@ -118,8 +120,8 @@ public class ShopDao {
 			conn = DBConnection.getConnection();
 			// 2、SQL语句
 			String sql = "insert into shop("
-					+ "title,head,price,imgs,desc,num,time) "
-					+ " values(?,?,?,?,?,?,?)";
+					+ "title,head,price,imgs,intro,num,time,video) "
+					+ " values(?,?,?,?,?,?,?,?)";
 			// 3、获得PreparedStatement对象
 			prep = conn.prepareStatement(sql);
 			System.out.println(prep.toString());
@@ -128,9 +130,10 @@ public class ShopDao {
 			prep.setString(2, shop.getHead());
 			prep.setString(3, shop.getPrice());
 			prep.setString(4, shop.getImgs());
-			prep.setString(5, shop.getDesc());
+			prep.setString(5, shop.getIntro());
 			prep.setInt(6, shop.getNum());
 			prep.setString(7, System.currentTimeMillis() + "");
+			prep.setString(8, shop.getVideo());
 			// 5、执行SQL语句
 			prep.executeUpdate();
 		} catch (Exception e) {
@@ -187,21 +190,22 @@ public class ShopDao {
 		return true;
 	}
 
-	// 修改服务信息
+	// 修改信息
 	public boolean update(Shop shop) {
 		Connection conn = null;
 		PreparedStatement prep = null;
 		try {
 			conn = DBConnection.getConnection();
-			String sql = "UPDATE shop SET title=?,head=?,price=?,imgs=?,desc=?,num=? WHERE sid=?";
+			String sql = "UPDATE shop SET title=?,head=?,price=?,imgs=?,intro=?,num=?,video=? WHERE sid=?";
 			prep = conn.prepareStatement(sql);
 			prep.setString(1, shop.getTitle());
 			prep.setString(2, shop.getHead());
 			prep.setString(3, shop.getPrice());
 			prep.setString(4, shop.getImgs());
-			prep.setString(5, shop.getDesc());
+			prep.setString(5, shop.getIntro());
 			prep.setInt(6, shop.getNum());
-			prep.setInt(7, shop.getSid());
+			prep.setString(7, shop.getVideo());
+			prep.setInt(8, shop.getSid());
 			prep.executeUpdate();
 
 		} catch (Exception e) {

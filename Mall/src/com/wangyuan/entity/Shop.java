@@ -4,26 +4,28 @@ public class Shop {
 	private int sid;
 	private String head;
 	private String title;
-	private String desc;
+	private String intro;
 	private String imgs;
 	private String price;
 	private int num;
 	private String time;
+	private String video;
 	public Shop() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
-	public Shop(int sid, String head, String title, String desc, String imgs,
-			String price, int num, String time) {
+	public Shop(int sid, String head, String title, String intro, String imgs,
+			String price, int num, String time, String video) {
 		super();
 		this.sid = sid;
 		this.head = head;
 		this.title = title;
-		this.desc = desc;
+		this.intro = intro;
 		this.imgs = imgs;
 		this.price = price;
 		this.num = num;
 		this.time = time;
+		this.video = video;
 	}
 	public int getSid() {
 		return sid;
@@ -43,11 +45,11 @@ public class Shop {
 	public void setTitle(String title) {
 		this.title = title;
 	}
-	public String getDesc() {
-		return desc;
+	public String getIntro() {
+		return intro;
 	}
-	public void setDesc(String desc) {
-		this.desc = desc;
+	public void setIntro(String intro) {
+		this.intro = intro;
 	}
 	public String getImgs() {
 		return imgs;
@@ -73,10 +75,16 @@ public class Shop {
 	public void setTime(String time) {
 		this.time = time;
 	}
+	public String getVideo() {
+		return video;
+	}
+	public void setVideo(String video) {
+		this.video = video;
+	}
 	@Override
 	public String toString() {
 		return "Shop [sid=" + sid + ", head=" + head + ", title=" + title
-				+ ", desc=" + desc + ", imgs=" + imgs + ", price=" + price
-				+ ", num=" + num + ", time=" + time + "]";
+				+ ", intro=" + intro + ", imgs=" + imgs + ", price=" + price
+				+ ", num=" + num + ", time=" + time + ", video=" + video + "]";
 	}
 }

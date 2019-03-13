@@ -37,7 +37,7 @@
 
 		} else {
 			var oForm = document.getElementsByName("frmAction")[0];
-			oForm.action = "/Mall/DeleteServerServlet";
+			oForm.action = "/Mall/DeleteShopServlet";
 			oForm.submit();
 		}
 	}
@@ -55,7 +55,7 @@
 			alert("请选择一个用户！");
 		}else {
 			var oForm = document.getElementsByName("frmAction")[0];
-			oForm.action = "/Mall/ShowServerServlet";
+			oForm.action = "/Mall/ShowShopServlet";
 			oForm.submit();
 		}
 	}
@@ -112,10 +112,13 @@
 							<a href="/Mall/ListUserServlet" class="active">用户列表</a>
 						</dd>
 						<dd>
-							<a href="/Mall/ListServersServlet" class="active">服务列表</a>
+							<a href="/Mall/ListShopsServlet" class="active">商品列表</a>
 						</dd>
 						<dd>
-							<a href="/Mall/ListCleanersServlet" class="active">员工列表</a>
+							<a href="/Mall/ListCleanersServlet" class="active">推荐商品</a>
+						</dd>
+						<dd>
+							<a href="/Mall/ListCleanersServlet" class="active">热门商品</a>
 						</dd>
 						<dd>
 							<a href="/Mall/ListOrdersServlet" class="active">订单列表</a>
@@ -163,8 +166,8 @@
 				<section>
 					<button class="link_btn" id="loading" onclick="del()">删除商品</button>
 					<button class="link_btn" id="loading"
-						onclick="window.location.href='add_server.html'">增加商品</button>
-					<button class="link_btn" id="loading" onclick="change()">修改尚品</button>
+						onclick="window.location.href='add_shop.html'">增加商品</button>
+					<button class="link_btn" id="loading" onclick="change()">修改商品</button>
 				</section>
 				<section></section>
 				<section>
@@ -189,7 +192,7 @@
 								<td align=center><c:out value="${shop.head}"></c:out></td>
 								<td align=center><c:out value="${shop.price}"></c:out></td>
 								<td align=center><c:out value="${shop.num}"></c:out></td>
-								<td align=center><c:out value="${shop.desc}"></c:out></td>
+								<td align=center><c:out value="${shop.intro}"></c:out></td>
 								<td align=center><c:out value="${shop.time}"></c:out></td>
 							</tr>
 						</c:forEach>

@@ -161,13 +161,13 @@
   </servlet-mapping>
   <servlet>
     <description></description>
-    <display-name>ShowServerServlet</display-name>
-    <servlet-name>ShowServerServlet</servlet-name>
-    <servlet-class>com.wangyuan.web.ShowServerServlet</servlet-class>
+    <display-name>ShowShopServlet</display-name>
+    <servlet-name>ShowShopServlet</servlet-name>
+    <servlet-class>com.wangyuan.web.ShowShopServlet</servlet-class>
   </servlet>
   <servlet-mapping>
-    <servlet-name>ShowServerServlet</servlet-name>
-    <url-pattern>/ShowServerServlet</url-pattern>
+    <servlet-name>ShowShopServlet</servlet-name>
+    <url-pattern>/ShowShopServlet</url-pattern>
   </servlet-mapping>
   <servlet>
     <description></description>

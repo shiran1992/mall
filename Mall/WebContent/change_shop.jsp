@@ -91,14 +91,14 @@
 </head>
 <body>
 	<form name="frmAction" method="post" enctype="multipart/form-data"
-		action="/HomeMaking/ChangeServerServlet">
+		action="/Mall/ChangeShopServlet">
 		<!--header-->
 		<header>
 			<h1>
 				<img src="images/admin_logo.png" />
 			</h1>
 			<ul class="rt_nav">
-				<li><a href="/HomeMaking/login.html" class="quit_icon">安全退出</a></li>
+				<li><a href="/Mall/login.html" class="quit_icon">安全退出</a></li>
 			</ul>
 		</header>
 		
@@ -107,35 +107,30 @@
 			<tr align=left class="colom">
 				<td colspan="2" height=35>修改服务</td>
 			</tr> 
-			<input type="hidden" name="sid" value="${serverinfo.sid}">
+			<input type="hidden" name="sid" value="${shopinfo.sid}">
 			<tr class=even height=40>
-				<td width='100' align='right' nowrap>服务名&nbsp;</td>
-				<td bgcolor='#ffffff'><input type="text" name="name" value="${serverinfo.name}"><font
+				<td width='100' align='right' nowrap>商品名&nbsp;</td>
+				<td bgcolor='#ffffff'><input type="text" name="name" value="${shopinfo.title}"><font
 					color=#ff0000>*</font>
 			</tr>
 			<tr class=even height=40>
 				<td width='100' align='right' nowrap>价格&nbsp;</td>
-				<td bgcolor='#ffffff'><input type="text" name="price" value="${serverinfo.price}"><font
+				<td bgcolor='#ffffff'><input type="text" name="price" value="${shopinfo.price}"><font
 					color=#ff0000>*</font>
 			</tr>
 			<tr class=even height=40>
-				<td width='100' align='right' nowrap>服务员&nbsp;</td>
-				<td bgcolor='#ffffff'><input type="text" name="cid" value="${serverinfo.cleaner.cid}"><font
+				<td width='100' align='right' nowrap>数量&nbsp;</td>
+				<td bgcolor='#ffffff'><input type="text" name="num" value="${shopinfo.num}"><font
 					color=#ff0000>*</font>
-			</tr>
-			<tr class=even height=40>
-				<td width='100' align='right' nowrap>状态&nbsp;</td>
-				<td bgcolor='#ffffff'><input type="text" name="state" value="${serverinfo.state}"><font
-					color=#ff0000>(0:正常  1:首页下面  2:今日推荐)</font>
 			</tr>
 			<tr class=even height=40>
 				<td width='100' align='right' nowrap>图片&nbsp;</td>
 				<td bgcolor='#ffffff'><input type="file" cols=30 rows=5
-					name="file">${serverinfo.image}</td>
+					name="file">${shopinfo.head}</td>
 			</tr>
 			<tr class=even height=40>
 				<td width='100' align='right' nowrap>简介&nbsp;</td>
-				<td bgcolor='#ffffff'><textarea cols=30 rows=10 name="intro" >${serverinfo.intro}</textarea>
+				<td bgcolor='#ffffff'><textarea cols=30 rows=10 name="intro" >${shopinfo.intro}</textarea>
 				</td>
 			</tr>
 

@@ -2,7 +2,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=gbk">
-<title>添加服务</title>
+<title>添加商品</title>
 <link rel=stylesheet href="css/demo.css" type="text/css">
 <link rel="stylesheet" type="text/css" href="css/style.css" />
 </head>
@@ -64,7 +64,7 @@
 
 <body topmargin="10" leftmargin="10">
 	<form name="frmAction" method="post" enctype="multipart/form-data"
-		action="/Mall/AddServerServlet">
+		action="/Mall/AddShopServlet">
 		<!--header-->
 		<header>
 		<h1>
@@ -77,11 +77,11 @@
 		<table width="95%" border="0" cellpadding="3" cellspacing="1"
 			class="toolBar" align="center">
 			<tr align=left class="colom">
-				<td colspan="2" height=35>添加服务</td>
+				<td colspan="2" height=35>添加商品</td>
 			</tr>
 			<tr class=even height=40>
-				<td width='100' align='right' nowrap>服务名&nbsp;</td>
-				<td bgcolor='#ffffff'><input type="text" name="name"><font
+				<td width='100' align='right' nowrap>商品名&nbsp;</td>
+				<td bgcolor='#ffffff'><input type="text" name="title"><font
 					color=#ff0000>*</font>
 			</tr>
 			<tr class=even height=40>
@@ -90,8 +90,8 @@
 					color=#ff0000>*</font>
 			</tr>
 			<tr class=even height=40>
-				<td width='100' align='right' nowrap>服务员&nbsp;</td>
-				<td bgcolor='#ffffff'><input type="text" name="cid"><font
+				<td width='100' align='right' nowrap>数量&nbsp;</td>
+				<td bgcolor='#ffffff'><input type="text" name="num"><font
 					color=#ff0000>*</font>
 			</tr>
 			<tr class=even height=40>

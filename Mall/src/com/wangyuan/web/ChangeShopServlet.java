@@ -80,7 +80,7 @@ public class ChangeShopServlet extends HttpServlet {
 				poster.saveAs(path + "mall/" + poster.getFileName());
 			}			// 将头像信息保存到数据库
 			String title = smartUpload.getRequest().getParameter("title");
-			String desc = smartUpload.getRequest().getParameter("desc");
+			String intro = smartUpload.getRequest().getParameter("intro");
 			String price = smartUpload.getRequest().getParameter("price");
 			String num = smartUpload.getRequest().getParameter("num");
 
@@ -89,7 +89,7 @@ public class ChangeShopServlet extends HttpServlet {
 			shop.setPrice(price);
 			shop.setNum(Integer.parseInt(num));
 			shop.setHead("mall/" + "server"+poster.getFileName());
-			shop.setDesc(desc);
+			shop.setIntro(intro);
 
 			ShopService service = new ShopService();
 			if (service.update(shop)) {

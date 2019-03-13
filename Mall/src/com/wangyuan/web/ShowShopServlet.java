@@ -13,13 +13,13 @@ import com.wangyuan.service.ShopService;
 /**
  * Servlet implementation class ApplyTribeServlet
  */
-public class ShowServerServlet extends HttpServlet {
+public class ShowShopServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public ShowServerServlet() {
+    public ShowShopServlet() {
         super();
         // TODO Auto-generated constructor stub
     }

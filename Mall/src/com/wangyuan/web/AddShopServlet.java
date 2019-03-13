@@ -1,5 +1,6 @@
 package com.wangyuan.web;
 
+import java.io.Console;
 import java.io.File;
 import java.io.IOException;
 
@@ -70,19 +71,21 @@ public class AddShopServlet extends HttpServlet {
 				poster.saveAs(path + "mall/" + poster.getFileName());
 			}			// 将头像信息保存到数据库
 			String title = smartUpload.getRequest().getParameter("title");
-			String desc = smartUpload.getRequest().getParameter("desc");
+			String intro = smartUpload.getRequest().getParameter("intro");
 			String price = smartUpload.getRequest().getParameter("price");
 			String num = smartUpload.getRequest().getParameter("num");
-
+			String video = smartUpload.getRequest().getParameter("video");
 			Shop shop = new Shop();
 			shop.setTitle(title);
 			shop.setPrice(price);
 			shop.setNum(Integer.parseInt(num));
 			shop.setHead("mall/" + "server"+poster.getFileName());
-			shop.setDesc(desc);
+			shop.setIntro(intro);
+			shop.setVideo(video);
 
 			ShopService service = new ShopService();
-			if (service.save(shop)) {
+			Boolean flag = service.save(shop);
+			if (flag) {
 				request.setAttribute("shops",
 						new ShopService().getShopsByPage());
 				request.getRequestDispatcher("/list_shops.jsp").forward(
