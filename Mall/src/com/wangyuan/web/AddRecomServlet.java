@@ -1,6 +1,5 @@
 package com.wangyuan.web;
 
-import java.io.Console;
 import java.io.File;
 import java.io.IOException;
 
@@ -10,14 +9,23 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.jspsmart.upload.SmartUpload;
-import com.wangyuan.entity.Shop;
-import com.wangyuan.service.ShopService;
+import com.wangyuan.dao.ShopDao;
+import com.wangyuan.entity.Recom;
+import com.wangyuan.service.RecomService;
 
 /**
- * Servlet implementation class AddTribeServlet
+ * Servlet implementation class AddScoreServlet
  */
-public class AddShopServlet extends HttpServlet {
+public class AddRecomServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
+
+	/**
+	 * @see HttpServlet#HttpServlet()
+	 */
+	public AddRecomServlet() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
 
 	/**
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse
@@ -25,6 +33,7 @@ public class AddShopServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request,
 			HttpServletResponse response) throws ServletException, IOException {
+		// TODO Auto-generated method stub
 		doPost(request, response);
 	}
 
@@ -34,9 +43,9 @@ public class AddShopServlet extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request,
 			HttpServletResponse response) throws ServletException, IOException {
+		// TODO Auto-generated method stub
 		request.setCharacterEncoding("utf-8");
-		response.setCharacterEncoding("utf-8");
-		response.setContentType("text/html;charset=UTF-8");
+		response.setContentType("text/html;charset=utf-8");
 
 		String p = this.getServletContext().getRealPath("mall");
 		System.out.println(p);
@@ -49,8 +58,7 @@ public class AddShopServlet extends HttpServlet {
 
 			smartUpload.upload();
 			// 放图片的文件夹
-			String realPath = this.getServletContext()
-					.getRealPath("mall");
+			String realPath = this.getServletContext().getRealPath("mall");
 			System.out.println(realPath);
 			File dir = new File(realPath);
 
@@ -63,32 +71,25 @@ public class AddShopServlet extends HttpServlet {
 			if (!poster.isMissing()) {
 				String path = request.getServletContext().getRealPath("/");
 				// poster.getFileName() 原文件名
-				File file = new File(getServletContext().getRealPath(
-						"mall"), poster.getFileName());
+				File file = new File(getServletContext().getRealPath("mall"),
+						poster.getFileName());
 				String saveFileName = file.getAbsolutePath();
 				// 文件保存路径
 				poster.saveAs(saveFileName);
-				poster.saveAs(path + "mall/" + poster.getFileName());
-			}			// 将头像信息保存到数据库
+				poster.saveAs(path + "mall/" + "recom" + poster.getFileName());
+			} // 将头像信息保存到数据库
 			String title = smartUpload.getRequest().getParameter("title");
-			String intro = smartUpload.getRequest().getParameter("intro");
-			String price = smartUpload.getRequest().getParameter("price");
-			String num = smartUpload.getRequest().getParameter("num");
-			String video = smartUpload.getRequest().getParameter("video");
-			Shop shop = new Shop();
-			shop.setTitle(title);
-			shop.setPrice(price);
-			shop.setNum(Integer.parseInt(num));
-			shop.setHead("mall/" + "shop"+poster.getFileName());
-			shop.setIntro(intro);
-			shop.setVideo(video);
+			String sid = smartUpload.getRequest().getParameter("sid");
 
-			ShopService service = new ShopService();
-			Boolean flag = service.save(shop);
-			if (flag) {
-				request.setAttribute("shops",
-						new ShopService().getShopsByPage());
-				request.getRequestDispatcher("/list_shops.jsp").forward(
+			Recom recom = new Recom();
+			recom.setTitle(title);
+			recom.setShop(new ShopDao().getShopBySid(Integer.parseInt(sid)));
+			recom.setImg("mall/" + "recom" + poster.getFileName());
+
+			RecomService service = new RecomService();
+			if (service.save(recom)) {
+				request.setAttribute("recoms", new RecomService().getRecoms());
+				request.getRequestDispatcher("/list_recoms.jsp").forward(
 						request, response);
 			}
 		} catch (Exception e) {

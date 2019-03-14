@@ -6,7 +6,7 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import com.wangyuan.entity.OrderEntity;
+import com.wangyuan.entity.Order;
 import com.wangyuan.service.OrderService;
 
 /**
@@ -41,9 +41,9 @@ public class ChangeOrderServlet extends HttpServlet {
 		
 		String oid = request.getParameter("oid");
 		String state = request.getParameter("state");
-		OrderEntity order = new OrderEntity();
+		Order order = new Order();
 		order.setOid(Integer.parseInt(oid));
-		order.setState(Integer.parseInt(state));
+		order.setState(state);
 		OrderService service = new OrderService();
 		if (service.update(order)) {
 			request.setAttribute("orders",

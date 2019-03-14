@@ -3,7 +3,7 @@ package com.wangyuan.service;
 import java.util.List;
 
 import com.wangyuan.dao.OrderDao;
-import com.wangyuan.entity.OrderEntity;
+import com.wangyuan.entity.Order;
 
 public class OrderService {
 
@@ -15,17 +15,17 @@ public class OrderService {
 	}
 
 	// 我的订单
-	public List<OrderEntity> getPageOrders(int uid, int page) {
+	public List<Order> getPageOrders(int uid, int page) {
 		return dao.getPageOrders(uid, page);
 	}
 
 	// 获取订单集合
-	public List<OrderEntity> getOrdersByPage() {
+	public List<Order> getOrdersByPage() {
 		return dao.getOrdersByPage();
 	}
 
 	// 通过oid
-	public OrderEntity getOrderByOid(int oid) {
+	public Order getOrderByOid(int oid) {
 		return dao.getOrderByOid(oid);
 	}
 
@@ -35,12 +35,7 @@ public class OrderService {
 	}
 
 	// 修改订单信息
-	public boolean update(OrderEntity order) {
+	public boolean update(Order order) {
 		return dao.update(order);
-	}
-	
-	// 增加评论
-	public boolean updateComment(String comment,int oid) {
-		return dao.updateComment(comment, oid);
 	}
 }

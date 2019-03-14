@@ -6,19 +6,20 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import com.wangyuan.entity.CleanerEntity;
-import com.wangyuan.service.CleanerService;
+
+import com.wangyuan.service.HotService;
+import com.wangyuan.service.RecomService;
 
 /**
- * Servlet implementation class UnConcernOtherPeople
+ * Servlet implementation class ListHotsServlet
  */
-public class ShowCleanerServlet extends HttpServlet {
+public class ListHotsServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public ShowCleanerServlet() {
+    public ListHotsServlet() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -28,7 +29,7 @@ public class ShowCleanerServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		doPost(request, response);
+		doPost(request,response);
 	}
 
 	/**
@@ -39,11 +40,8 @@ public class ShowCleanerServlet extends HttpServlet {
 		request.setCharacterEncoding("utf-8");
 		response.setContentType("text/html;charset=utf-8");
 		
-		String[] ids =request.getParameterValues("chkCleaners");
-		CleanerService service = new CleanerService();
-		CleanerEntity cleaner = service.getCleanerByID(Integer.parseInt(ids[0]));
-		request.setAttribute("cleanerinfo", cleaner);
-		request.getRequestDispatcher("/change_cleaner.jsp").
+		request.setAttribute("hots", new HotService().getHots());
+		request.getRequestDispatcher("/list_hots.jsp").
 		forward(request, response);
 	}
 

@@ -5,7 +5,7 @@
 <html>
 <head>
 <meta charset="utf-8" />
-<title>家政服务后台管理系统</title>
+<title>电脑配件管理后台</title>
 <meta name="author" content="DeathGhost" />
 <link rel="stylesheet" type="text/css" href="css/style.css" />
 <!--[if lt IE 9]>
@@ -115,10 +115,10 @@
 							<a href="/Mall/ListShopsServlet" class="active">商品列表</a>
 						</dd>
 						<dd>
-							<a href="/Mall/ListCleanersServlet" class="active">推荐商品</a>
+							<a href="/Mall/ListRecomsServlet" class="active">推荐商品</a>
 						</dd>
 						<dd>
-							<a href="/Mall/ListCleanersServlet" class="active">热门商品</a>
+							<a href="/Mall/ListHotsServlet" class="active">热门商品</a>
 						</dd>
 						<dd>
 							<a href="/Mall/ListOrdersServlet" class="active">订单列表</a>

@@ -6,20 +6,18 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-
-import com.google.gson.Gson;
-import com.wangyuan.service.CleanerService;
+import com.wangyuan.service.RecomService;
 
 /**
- * Servlet implementation class GetConcernedFriends
+ * Servlet implementation class DeleteApplyServlet
  */
-public class GetCleanerServlet extends HttpServlet {
+public class DeleteRecomServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public GetCleanerServlet() {
+    public DeleteRecomServlet() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -39,10 +37,13 @@ public class GetCleanerServlet extends HttpServlet {
 		// TODO Auto-generated method stub
 		request.setCharacterEncoding("utf-8");
 		response.setContentType("text/html;charset=utf-8");
-		int page = Integer.parseInt(request.getParameter("page"));
-		CleanerService service = new CleanerService();
-		Gson gson = new Gson();
-		response.getWriter().write(gson.toJson(service.getCleanerByPage(page)));
+		
+		String[] ids =request.getParameterValues("chkCleaners");
+		RecomService service = new RecomService();
+		if(service.deleteRecomByRid(Integer.parseInt(ids[0]))){
+			request.setAttribute("recoms", new RecomService().getRecoms());
+			request.getRequestDispatcher("/list_recoms.jsp").
+			forward(request, response);
+		}
 	}
-
 }

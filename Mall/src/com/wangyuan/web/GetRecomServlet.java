@@ -7,18 +7,19 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.wangyuan.service.OrderService;
+import com.google.gson.Gson;
+import com.wangyuan.service.RecomService;
 
 /**
- * Servlet implementation class UpdateCommentServlet
+ * Servlet implementation class GetConcernedFriends
  */
-public class UpdateCommentServlet extends HttpServlet {
+public class GetRecomServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public UpdateCommentServlet() {
+    public GetRecomServlet() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -28,6 +29,7 @@ public class UpdateCommentServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
+		doPost(request,response);
 	}
 
 	/**
@@ -37,15 +39,10 @@ public class UpdateCommentServlet extends HttpServlet {
 		// TODO Auto-generated method stub
 		request.setCharacterEncoding("utf-8");
 		response.setContentType("text/html;charset=utf-8");
-		
-		int oid = Integer.parseInt(request.getParameter("oid"));
-		String comment = request.getParameter("comment");
-		OrderService service = new OrderService();
-//		if(service.updateComment(comment, oid)){
-//			response.getWriter().write("true");
-//		}else{
-//			response.getWriter().write("false");
-//		}
+		int page = Integer.parseInt(request.getParameter("page"));
+		RecomService service = new RecomService();
+		Gson gson = new Gson();
+		response.getWriter().write(gson.toJson(service.getRecomByPage(page)));
 	}
 
 }

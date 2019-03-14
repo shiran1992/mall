@@ -79,17 +79,21 @@ public class ChangeShopServlet extends HttpServlet {
 				poster.saveAs(saveFileName);
 				poster.saveAs(path + "mall/" + poster.getFileName());
 			}			// 将头像信息保存到数据库
+			String sid = smartUpload.getRequest().getParameter("sid");
 			String title = smartUpload.getRequest().getParameter("title");
 			String intro = smartUpload.getRequest().getParameter("intro");
 			String price = smartUpload.getRequest().getParameter("price");
 			String num = smartUpload.getRequest().getParameter("num");
 
 			Shop shop = new Shop();
+			shop.setSid(Integer.parseInt(sid));
 			shop.setTitle(title);
 			shop.setPrice(price);
 			shop.setNum(Integer.parseInt(num));
-			shop.setHead("mall/" + "server"+poster.getFileName());
+			shop.setHead("mall/" + "shop"+poster.getFileName());
 			shop.setIntro(intro);
+			
+			System.out.println("////////////"+shop.toString());
 
 			ShopService service = new ShopService();
 			if (service.update(shop)) {

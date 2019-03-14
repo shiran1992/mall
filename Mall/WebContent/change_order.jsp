@@ -5,7 +5,7 @@
 <html>
 <head>
 <meta charset="utf-8" />
-<title>家政服务后台管理系统</title>
+<title>电脑配件管理后台</title>
 <meta name="author" content="DeathGhost" />
 <link rel="stylesheet" type="text/css" href="css/style.css" />
 <!--[if lt IE 9]>
@@ -90,21 +90,21 @@
 </script>
 </head>
 <body>
-	<form name="frmAction" method="post" action="/HomeMaking/ChangeOrderServlet">
+	<form name="frmAction" method="post" action="/Mall/ChangeOrderServlet">
 		<!--header-->
 		<header>
 			<h1>
 				<img src="images/admin_logo.png" />
 			</h1>
 			<ul class="rt_nav">
-				<li><a href="/HomeMaking/login.html" class="quit_icon">安全退出</a></li>
+				<li><a href="/Mall/login.html" class="quit_icon">安全退出</a></li>
 			</ul>
 		</header>
 		
 		<table width="95%" border="0" cellpadding="3" cellspacing="1"
 			class="toolBar" align="center">
 			<tr align=left class="colom">
-				<td colspan="2" height=35>修改订单</td>
+				<td colspan="2" height=35>修改订单状态</td>
 			</tr> 
 			<input type="hidden" name="oid" value="${orderinfo.oid}">
 			<tr class=even height=40>
@@ -112,20 +112,20 @@
 				<td bgcolor='#ffffff'>${orderinfo.user.uid}</td>
 			</tr>
 			<tr class=even height=40>
-				<td width='100' align='right' nowrap>员工ID:&nbsp;</td>
-				<td bgcolor='#ffffff'>${orderinfo.server.cid}</td>
+				<td width='100' align='right' nowrap>商品ID:&nbsp;</td>
+				<td bgcolor='#ffffff'>${orderinfo.shop.sid}</td>
 			</tr>
 			<tr class=even height=40>
 				<td width='100' align='right' nowrap>创建时间:&nbsp;</td>
-				<td bgcolor='#ffffff'>${orderinfo.create_time}</td>
+				<td bgcolor='#ffffff'>${orderinfo.time}</td>
 			</tr>
 			<tr class=even height=40>
-				<td width='100' align='right' nowrap>价格:&nbsp;</td>
-				<td bgcolor='#ffffff'>${orderinfo.all_price}</td>
+				<td width='100' align='right' nowrap>收货地址:&nbsp;</td>
+				<td bgcolor='#ffffff'>${orderinfo.address}</td>
 			</tr>
 			<tr class=even height=40>
-				<td width='100' align='right' nowrap>服务时间:&nbsp;</td>
-				<td bgcolor='#ffffff'>${orderinfo.server_time}</td>
+				<td width='100' align='right' nowrap>联系电话:&nbsp;</td>
+				<td bgcolor='#ffffff'>${orderinfo.phone}</td>
 			</tr>
 			<tr class=even height=40>
 				<td width='100' align='right' nowrap>状态:&nbsp;</td>

@@ -16,7 +16,7 @@
 <script>
 	function selectAll() {
 		var obj = document.getElementsByName("chkAll")[0];
-		var checkbox = document.getElementsByName("chkOrders");
+		var checkbox = document.getElementsByName("chkCleaners");
 		for (var i = 0; i < checkbox.length; i++) {
 			checkbox[i].checked = obj.checked;
 		}
@@ -25,7 +25,7 @@
 	function del() {
 
 		//客户端验证，验证是否选中
-		var ch = document.getElementsByName("chkOrders");
+		var ch = document.getElementsByName("chkCleaners");
 		var checkcount = 0;
 		for (var i = 0; i < ch.length; i++) {
 			if (ch[i].checked == true) {
@@ -37,14 +37,14 @@
 
 		} else {
 			var oForm = document.getElementsByName("frmAction")[0];
-			oForm.action = "/Mall/DeleteOrderServlet";
+			oForm.action = "/Mall/DeleteRecomServlet";
 			oForm.submit();
 		}
 	}
-	
+
 	function change() {
 		//客户端验证，验证是否选中
-		var ch = document.getElementsByName("chkOrders");
+		var ch = document.getElementsByName("chkCleaners");
 		var checkcount = 0;
 		for (var i = 0; i < ch.length; i++) {
 			if (ch[i].checked == true) {
@@ -52,10 +52,10 @@
 			}
 		}
 		if (checkcount == 0 || checkcount > 1) {
-			alert("请选择一个用户！");
-		}else {
+			alert("请选择一个员工！");
+		} else {
 			var oForm = document.getElementsByName("frmAction")[0];
-			oForm.action = "/Mall/ShowOrderServlet";
+			oForm.action = "/Mall/ShowRecomServlet";
 			oForm.submit();
 		}
 	}
@@ -164,8 +164,10 @@
 				</script>
 
 				<section>
-					<button class="link_btn" id="loading" onclick="del()">删除订单</button>
-					<button class="link_btn" id="loading" onclick="change()">修改订单状态</button>
+					<button class="link_btn" id="loading" onclick="del()">删除推荐商品</button>
+					<button class="link_btn" id="loading"
+						onclick="window.location.href='add_recom.html'">增加推荐商品</button>
+					<button class="link_btn" id="loading" onclick="change()">修改推荐商品</button>
 				</section>
 				<section></section>
 				<section>
@@ -174,23 +176,18 @@
 							<td><input type="checkBox" name="chkAll"
 								onClick="selectAll()" /></td>
 							<td align='center'>id</td>
-							<td>uid</td>
-							<td>sid</td>
-							<td>创建时间</td>
-							<td>收获地址</td>
-							<td>联系电话</td>
-							<td>状态</td>
+							<td align='center'>商品id</td>
+							<td>标题</td>
+							<td>图片</td>
 						</tr>
-						<c:forEach var="order" items="${orders}">
+						<c:forEach var="recom" items="${recoms}">
 							<tr class='even'>
-								<td align='center'><input type='checkbox' name='chkOrders'value='${order.oid}'></td>
-								<td align='center'><c:out value="${order.oid}"></c:out></td>
-								<td align=center><c:out value="${order.user.uid}"></c:out></td>
-								<td align=center><c:out value="${order.shop.sid}"></c:out></td>
-								<td align=center><c:out value="${order.time}"></c:out></td>
-								<td align=center><c:out value="${order.address}"></c:out></td>
-								<td align=center><c:out value="${order.phone}"></c:out></td>
-								<td align=center><c:out value="${order.state}"></c:out></td>
+								<td align='center'><input type='checkbox'
+									name='chkCleaners' value="${recom.rid}"></td>
+								<td align='center'><c:out value="${recom.rid}"></c:out></td>
+								<td align='center'><c:out value="${recom.shop.sid}"></c:out></td>
+								<td align=center><c:out value="${recom.title}"></c:out></td>
+								<td align=center><c:out value="${recom.img}"></c:out></td>
 							</tr>
 						</c:forEach>
 

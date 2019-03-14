@@ -2,7 +2,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=gbk">
-<title>添加员工</title>
+<title>添加热门</title>
 <link rel=stylesheet href="css/demo.css" type="text/css">
 <link rel="stylesheet" type="text/css" href="css/style.css" />
 </head>
@@ -64,7 +64,7 @@
 
 <body topmargin="10" leftmargin="10">
 	<form name="frmAction" method="post" enctype="multipart/form-data"
-		action="/Mall/AddCleanerServlet">
+		action="/Mall/AddHotServlet">
 		<!--header-->
 		<header>
 		<h1>
@@ -77,47 +77,23 @@
 		<table width="95%" border="0" cellpadding="3" cellspacing="1"
 			class="toolBar" align="center">
 			<tr align=left class="colom">
-				<td colspan="2" height=35>添加员工</td>
+				<td colspan="2" height=35>添加热门</td>
 			</tr>
-			<tr class=even height=40>
-				<td width='100' align='right' nowrap>名字&nbsp;</td>
-				<td bgcolor='#ffffff'><input type="text" name="name"><font
+			<tr class=even height=40>.
+				<td width='100' align='right' nowrap>主题&nbsp;</td>
+				<td bgcolor='#ffffff'><input type="text" name="title"><font
 					color=#ff0000>*</font>
 			</tr>
 			<tr class=even height=40>
-				<td width='100' align='right' nowrap>电话&nbsp;</td>
-				<td bgcolor='#ffffff'><input type="text" name="phone"><font
+				<td width='100' align='right' nowrap>商品id&nbsp;</td>
+				<td bgcolor='#ffffff'><input type="text" name="sid"><font
 					color=#ff0000>*</font>
 			</tr>
 			<tr class=even height=40>
-				<td width='100' align='right' nowrap>照片&nbsp;</td>
+				<td width='100' align='right' nowrap>图片&nbsp;</td>
 				<td bgcolor='#ffffff'><input type="file" cols=30 rows=5
 					name="file"></td>
 			</tr>
-			<tr class=even height=40>
-				<td width='100' align='right' nowrap>性别&nbsp;</td>
-				<td bgcolor='#ffffff'><input type="text" name="sex"><font
-					color=#ff0000>(1:男  0:女)</font>
-			</tr>
-			<tr class=even height=40>
-				<td width='100' align='right' nowrap>年龄&nbsp;</td>
-				<td bgcolor='#ffffff'><input type="text" name="age">
-			</tr>
-			<tr class=even height=40>
-				<td width='100' align='right' nowrap>婚姻状况&nbsp;</td>
-				<td bgcolor='#ffffff'><input type="text" name="marrysta"><font
-					color=#ff0000>(1:已婚  0:未婚)</font>
-			</tr>
-			<tr class=even height=40>
-				<td width='100' align='right' nowrap>签名&nbsp;</td>
-				<td bgcolor='#ffffff'><input type="text" name="sign">
-			</tr>
-			<tr class=even height=40>
-				<td width='100' align='right' nowrap>简介&nbsp;</td>
-				<td bgcolor='#ffffff'><textarea cols=30 rows=5 name="intro"></textarea>
-				</td>
-			</tr>
-
 
 			<tr class=even>
 				<td height=35 colspan="2"><input type="submit" value="提交"

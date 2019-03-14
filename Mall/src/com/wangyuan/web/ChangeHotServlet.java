@@ -9,19 +9,22 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.jspsmart.upload.SmartUpload;
-import com.wangyuan.entity.CleanerEntity;
-import com.wangyuan.service.CleanerService;
+import com.wangyuan.dao.ShopDao;
+import com.wangyuan.entity.Hot;
+import com.wangyuan.entity.Recom;
+import com.wangyuan.service.HotService;
+import com.wangyuan.service.RecomService;
 
 /**
- * Servlet implementation class UploadSchoolInfoImageServlet
+ * Servlet implementation class ChangeHotServlet
  */
-public class ChangeCleanerServlet extends HttpServlet {
+public class ChangeHotServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public ChangeCleanerServlet() {
+    public ChangeHotServlet() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -31,7 +34,7 @@ public class ChangeCleanerServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		doPost(request,response);
+		doPost(request, response);
 	}
 
 	/**
@@ -42,7 +45,7 @@ public class ChangeCleanerServlet extends HttpServlet {
 		request.setCharacterEncoding("utf-8");
 		response.setCharacterEncoding("utf-8");
 		response.setContentType("text/html;charset=UTF-8");
-		String p = this.getServletContext().getRealPath("homemaking");
+		String p = this.getServletContext().getRealPath("mall");
 		System.out.println(p);
 		// 用smartupload获得上传文件
 
@@ -53,8 +56,7 @@ public class ChangeCleanerServlet extends HttpServlet {
 
 			smartUpload.upload();
 			// 放图片的文件夹
-			String realPath = this.getServletContext()
-					.getRealPath("homemaking");
+			String realPath = this.getServletContext().getRealPath("mall");
 			System.out.println(realPath);
 			File dir = new File(realPath);
 
@@ -67,40 +69,26 @@ public class ChangeCleanerServlet extends HttpServlet {
 			if (!poster.isMissing()) {
 				String path = request.getServletContext().getRealPath("/");
 				// poster.getFileName() 原文件名
-				File file = new File(getServletContext().getRealPath(
-						"homemaking"), poster.getFileName());
+				File file = new File(getServletContext().getRealPath("mall"),
+						poster.getFileName());
 				String saveFileName = file.getAbsolutePath();
 				// 文件保存路径
 				poster.saveAs(saveFileName);
-				poster.saveAs(path + "homemaking/" + poster.getFileName());
-			}			// 将头像信息保存到数据库
-			String cid = smartUpload.getRequest().getParameter("cid");
-			String name = smartUpload.getRequest().getParameter("name");
-			String phone = smartUpload.getRequest().getParameter("phone");
-			String sex = smartUpload.getRequest().getParameter("sex");
-			String age = smartUpload.getRequest().getParameter("age");
-			String marrysta = smartUpload.getRequest().getParameter("marrysta");
-			String state = smartUpload.getRequest().getParameter("state");
-			String sign = smartUpload.getRequest().getParameter("sign");
-			String intro = smartUpload.getRequest().getParameter("intro");
+				poster.saveAs(path + "mall/" + poster.getFileName());
+			} // 将头像信息保存到数据库
+			String hid = smartUpload.getRequest().getParameter("hid");
+			String title = smartUpload.getRequest().getParameter("title");
+			String sid = smartUpload.getRequest().getParameter("sid");
 
-			CleanerEntity cleaner = new CleanerEntity();
-			cleaner.setCid(Integer.parseInt(cid));
-			cleaner.setName(name);
-			cleaner.setPhone(phone);
-			cleaner.setSex(Integer.parseInt(sex));
-			cleaner.setAge(Integer.parseInt(age));
-			cleaner.setMarrysta(Integer.parseInt(marrysta));
-			cleaner.setState(Integer.parseInt(state));
-			cleaner.setHead(poster.getFileName().length() == 0 ? "":"homemaking/" +"cleaner"+ poster.getFileName());
-			cleaner.setSign(sign);
-			cleaner.setIntro(intro);
+			Hot hot = new Hot();
+			hot.setHid(Integer.parseInt(hid));
+			hot.setTitle(title);
+			hot.setShop(new ShopDao().getShopBySid(Integer.parseInt(sid)));
 
-			CleanerService service = new CleanerService();
-			if (service.update(cleaner)) {
-				request.setAttribute("cleaners",
-						new CleanerService().getCleaner());
-				request.getRequestDispatcher("/list_cleaners.jsp").forward(
+			HotService service = new HotService();
+			if (service.update(hot)) {
+				request.setAttribute("hots", service.getHots());
+				request.getRequestDispatcher("/list_hots.jsp").forward(
 						request, response);
 			}
 		} catch (Exception e) {

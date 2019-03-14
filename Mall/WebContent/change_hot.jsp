@@ -16,7 +16,7 @@
 <script>
 	function selectAll() {
 		var obj = document.getElementsByName("chkAll")[0];
-		var checkbox = document.getElementsByName("chkServers");
+		var checkbox = document.getElementsByName("chkCleaners");
 		for (var i = 0; i < checkbox.length; i++) {
 			checkbox[i].checked = obj.checked;
 		}
@@ -25,7 +25,7 @@
 	function del() {
 
 		//客户端验证，验证是否选中
-		var ch = document.getElementsByName("chkServers");
+		var ch = document.getElementsByName("chkCleaners");
 		var checkcount = 0;
 		for (var i = 0; i < ch.length; i++) {
 			if (ch[i].checked == true) {
@@ -44,7 +44,7 @@
 
 	function change() {
 		//客户端验证，验证是否选中
-		var ch = document.getElementsByName("chkServers");
+		var ch = document.getElementsByName("chkCleaners");
 		var checkcount = 0;
 		for (var i = 0; i < ch.length; i++) {
 			if (ch[i].checked == true) {
@@ -55,7 +55,7 @@
 			alert("请选择一个用户！");
 		}else {
 			var oForm = document.getElementsByName("frmAction")[0];
-			oForm.action = "/HomeMaking/ShowServerServlet";
+			oForm.action = "/HomeMaking/ShowCleanerServlet";
 			oForm.submit();
 		}
 	}
@@ -91,7 +91,7 @@
 </head>
 <body>
 	<form name="frmAction" method="post" enctype="multipart/form-data"
-		action="/Mall/ChangeShopServlet">
+		action="/Mall/ChangeHotServlet">
 		<!--header-->
 		<header>
 			<h1>
@@ -105,35 +105,24 @@
 		<table width="95%" border="0" cellpadding="3" cellspacing="1"
 			class="toolBar" align="center">
 			<tr align=left class="colom">
-				<td colspan="2" height=35>修改商品信息</td>
-			</tr> 
-			<input type="hidden" name="sid" value="${shopinfo.sid}">
-			<tr class=even height=40>
-				<td width='100' align='right' nowrap>商品名&nbsp;</td>
-				<td bgcolor='#ffffff'><input type="text" name="title" value="${shopinfo.title}"><font
+				<td colspan="2" height=35>修改热门</td>
+			</tr>
+			<input type="hidden" name="hid" value="${hotinfo.hid}">
+			<tr class=even height=35>
+				<td width='100' align='right' nowrap>主题&nbsp;</td>
+				<td bgcolor='#ffffff'><input type="text" name="title" value="${hotinfo.title}"><font
 					color=#ff0000>*</font>
 			</tr>
-			<tr class=even height=40>
-				<td width='100' align='right' nowrap>价格&nbsp;</td>
-				<td bgcolor='#ffffff'><input type="text" name="price" value="${shopinfo.price}"><font
+			<tr class=even height=35>
+				<td width='100' align='right' nowrap>商品id&nbsp;</td>
+				<td bgcolor='#ffffff'><input type="text" name="sid" value="${hotinfo.shop.sid}"><font
 					color=#ff0000>*</font>
 			</tr>
-			<tr class=even height=40>
-				<td width='100' align='right' nowrap>数量&nbsp;</td>
-				<td bgcolor='#ffffff'><input type="text" name="num" value="${shopinfo.num}"><font
-					color=#ff0000>*</font>
-			</tr>
-			<tr class=even height=40>
+			<tr class=even height=35>
 				<td width='100' align='right' nowrap>图片&nbsp;</td>
 				<td bgcolor='#ffffff'><input type="file" cols=30 rows=5
-					name="file">${shopinfo.head}</td>
+					name="file">${hotinfo.img}</td>
 			</tr>
-			<tr class=even height=40>
-				<td width='100' align='right' nowrap>简介&nbsp;</td>
-				<td bgcolor='#ffffff'><textarea cols=30 rows=10 name="intro" >${shopinfo.intro}</textarea>
-				</td>
-			</tr>
-
 
 			<tr class=even>
 				<td height=35 colspan="2"><input type="submit" value="提交"

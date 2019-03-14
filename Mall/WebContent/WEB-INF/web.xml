@@ -121,13 +121,13 @@
   </servlet-mapping>
   <servlet>
     <description></description>
-    <display-name>ListCleanersServlet</display-name>
-    <servlet-name>ListCleanersServlet</servlet-name>
-    <servlet-class>com.wangyuan.web.ListCleanersServlet</servlet-class>
+    <display-name>ListRecomsServlet</display-name>
+    <servlet-name>ListRecomsServlet</servlet-name>
+    <servlet-class>com.wangyuan.web.ListRecomsServlet</servlet-class>
   </servlet>
   <servlet-mapping>
-    <servlet-name>ListCleanersServlet</servlet-name>
-    <url-pattern>/ListCleanersServlet</url-pattern>
+    <servlet-name>ListRecomsServlet</servlet-name>
+    <url-pattern>/ListRecomsServlet</url-pattern>
   </servlet-mapping>
   <servlet>
     <description></description>
@@ -141,13 +141,13 @@
   </servlet-mapping>
   <servlet>
     <description></description>
-    <display-name>DeleteCleanerServlet</display-name>
-    <servlet-name>DeleteCleanerServlet</servlet-name>
-    <servlet-class>com.wangyuan.web.DeleteCleanerServlet</servlet-class>
+    <display-name>DeleteRecomServlet</display-name>
+    <servlet-name>DeleteRecomServlet</servlet-name>
+    <servlet-class>com.wangyuan.web.DeleteRecomServlet</servlet-class>
   </servlet>
   <servlet-mapping>
-    <servlet-name>DeleteCleanerServlet</servlet-name>
-    <url-pattern>/DeleteCleanerServlet</url-pattern>
+    <servlet-name>DeleteRecomServlet</servlet-name>
+    <url-pattern>/DeleteRecomServlet</url-pattern>
   </servlet-mapping>
   <servlet>
     <description></description>
@@ -181,13 +181,13 @@
   </servlet-mapping>
   <servlet>
     <description></description>
-    <display-name>ShowCleanerServlet</display-name>
-    <servlet-name>ShowCleanerServlet</servlet-name>
-    <servlet-class>com.wangyuan.web.ShowCleanerServlet</servlet-class>
+    <display-name>ShowRecomServlet</display-name>
+    <servlet-name>ShowRecomServlet</servlet-name>
+    <servlet-class>com.wangyuan.web.ShowRecomServlet</servlet-class>
   </servlet>
   <servlet-mapping>
-    <servlet-name>ShowCleanerServlet</servlet-name>
-    <url-pattern>/ShowCleanerServlet</url-pattern>
+    <servlet-name>ShowRecomServlet</servlet-name>
+    <url-pattern>/ShowRecomServlet</url-pattern>
   </servlet-mapping>
   <servlet>
     <description></description>
@@ -211,13 +211,13 @@
   </servlet-mapping>
   <servlet>
     <description></description>
-    <display-name>GetCleanerServlet</display-name>
-    <servlet-name>GetCleanerServlet</servlet-name>
-    <servlet-class>com.wangyuan.web.GetCleanerServlet</servlet-class>
+    <display-name>GetRecomServlet</display-name>
+    <servlet-name>GetRecomServlet</servlet-name>
+    <servlet-class>com.wangyuan.web.GetRecomServlet</servlet-class>
   </servlet>
   <servlet-mapping>
-    <servlet-name>GetCleanerServlet</servlet-name>
-    <url-pattern>/GetCleanerServlet</url-pattern>
+    <servlet-name>GetRecomServlet</servlet-name>
+    <url-pattern>/GetRecomServlet</url-pattern>
   </servlet-mapping>
   <servlet>
     <description></description>
@@ -291,13 +291,13 @@
   </servlet-mapping>
   <servlet>
     <description></description>
-    <display-name>ChangeCleanerServlet</display-name>
-    <servlet-name>ChangeCleanerServlet</servlet-name>
-    <servlet-class>com.wangyuan.web.ChangeCleanerServlet</servlet-class>
+    <display-name>ChangeRecomServlet</display-name>
+    <servlet-name>ChangeRecomServlet</servlet-name>
+    <servlet-class>com.wangyuan.web.ChangeRecomServlet</servlet-class>
   </servlet>
   <servlet-mapping>
-    <servlet-name>ChangeCleanerServlet</servlet-name>
-    <url-pattern>/ChangeCleanerServlet</url-pattern>
+    <servlet-name>ChangeRecomServlet</servlet-name>
+    <url-pattern>/ChangeRecomServlet</url-pattern>
   </servlet-mapping>
   <servlet>
     <description></description>
@@ -311,13 +311,13 @@
   </servlet-mapping>
   <servlet>
     <description></description>
-    <display-name>AddCleanerServlet</display-name>
-    <servlet-name>AddCleanerServlet</servlet-name>
-    <servlet-class>com.wangyuan.web.AddCleanerServlet</servlet-class>
+    <display-name>AddRecomServlet</display-name>
+    <servlet-name>AddRecomServlet</servlet-name>
+    <servlet-class>com.wangyuan.web.AddRecomServlet</servlet-class>
   </servlet>
   <servlet-mapping>
-    <servlet-name>AddCleanerServlet</servlet-name>
-    <url-pattern>/AddCleanerServlet</url-pattern>
+    <servlet-name>AddRecomServlet</servlet-name>
+    <url-pattern>/AddRecomServlet</url-pattern>
   </servlet-mapping>
   <servlet>
     <description></description>
@@ -328,5 +328,55 @@
   <servlet-mapping>
     <servlet-name>UpdateCommentServlet</servlet-name>
     <url-pattern>/UpdateCommentServlet</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>ListHotsServlet</display-name>
+    <servlet-name>ListHotsServlet</servlet-name>
+    <servlet-class>com.wangyuan.web.ListHotsServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ListHotsServlet</servlet-name>
+    <url-pattern>/ListHotsServlet</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>ShowHotServlet</display-name>
+    <servlet-name>ShowHotServlet</servlet-name>
+    <servlet-class>com.wangyuan.web.ShowHotServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ShowHotServlet</servlet-name>
+    <url-pattern>/ShowHotServlet</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>AddHotServlet</display-name>
+    <servlet-name>AddHotServlet</servlet-name>
+    <servlet-class>com.wangyuan.web.AddHotServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>AddHotServlet</servlet-name>
+    <url-pattern>/AddHotServlet</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>ChangeHotServlet</display-name>
+    <servlet-name>ChangeHotServlet</servlet-name>
+    <servlet-class>com.wangyuan.web.ChangeHotServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ChangeHotServlet</servlet-name>
+    <url-pattern>/ChangeHotServlet</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>DeleteHotServlet</display-name>
+    <servlet-name>DeleteHotServlet</servlet-name>
+    <servlet-class>com.wangyuan.web.DeleteHotServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>DeleteHotServlet</servlet-name>
+    <url-pattern>/DeleteHotServlet</url-pattern>
   </servlet-mapping>
 </web-app>

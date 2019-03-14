@@ -7,7 +7,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import com.google.gson.Gson;
-import com.wangyuan.service.CleanerService;
+import com.wangyuan.service.RecomService;
 
 /**
  * Servlet implementation class WeekTopTribeServlet
@@ -38,14 +38,14 @@ public class WeekTopCleanerServlet extends HttpServlet {
 		// TODO Auto-generated method stub
 		request.setCharacterEncoding("utf-8");
 		response.setContentType("text/html;charset=utf-8");
-		CleanerService service = new CleanerService();
-		if(service.getCleanerByState().size()>0){
+		RecomService service = new RecomService();
+		/*if(service.getCleanerByState().size()>0){
 			System.out.println(service.getCleanerByState().toString());
 			Gson gson = new Gson();
 			response.getWriter().write(gson.toJson(service.getCleanerByState()));
 		}else{
 			response.getWriter().write("null");
-		}
+		}*/
 	}
 
 }

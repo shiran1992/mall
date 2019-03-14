@@ -1,10 +1,13 @@
 package com.wangyuan.web;
 
 import java.io.IOException;
+
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+
+import com.wangyuan.entity.Order;
 import com.wangyuan.entity.OrderEntity;
 import com.wangyuan.service.OrderService;
 
@@ -41,7 +44,7 @@ public class ShowOrderServlet extends HttpServlet {
 		
 		String[] ids =request.getParameterValues("chkOrders");
 		OrderService service = new OrderService();
-		OrderEntity order = service.getOrderByOid(Integer.parseInt(ids[0]));
+		Order order = service.getOrderByOid(Integer.parseInt(ids[0]));
 		request.setAttribute("orderinfo", order);
 		System.out.println(order.toString());
 		request.getRequestDispatcher("/change_order.jsp").

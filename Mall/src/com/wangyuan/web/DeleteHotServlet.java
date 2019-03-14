@@ -6,18 +6,20 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import com.wangyuan.service.CleanerService;
+
+import com.wangyuan.service.HotService;
+import com.wangyuan.service.RecomService;
 
 /**
- * Servlet implementation class DeleteApplyServlet
+ * Servlet implementation class DeleteHotServlet
  */
-public class DeleteCleanerServlet extends HttpServlet {
+public class DeleteHotServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public DeleteCleanerServlet() {
+    public DeleteHotServlet() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -25,7 +27,7 @@ public class DeleteCleanerServlet extends HttpServlet {
 	/**
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		doPost(request,response);
 	}
@@ -39,11 +41,12 @@ public class DeleteCleanerServlet extends HttpServlet {
 		response.setContentType("text/html;charset=utf-8");
 		
 		String[] ids =request.getParameterValues("chkCleaners");
-		CleanerService service = new CleanerService();
-		if(service.deleteCleanerByCid(Integer.parseInt(ids[0]))){
-			request.setAttribute("cleaners", new CleanerService().getCleaner());
-			request.getRequestDispatcher("/list_cleaners.jsp").
+		HotService service = new HotService();
+		if(service.deleteHotByHid(Integer.parseInt(ids[0]))){
+			request.setAttribute("hots", service.getHots());
+			request.getRequestDispatcher("/list_hots.jsp").
 			forward(request, response);
 		}
 	}
+
 }

@@ -9,19 +9,22 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.jspsmart.upload.SmartUpload;
-import com.wangyuan.entity.CleanerEntity;
-import com.wangyuan.service.CleanerService;
+import com.wangyuan.dao.ShopDao;
+import com.wangyuan.entity.Hot;
+import com.wangyuan.entity.Recom;
+import com.wangyuan.service.HotService;
+import com.wangyuan.service.RecomService;
 
 /**
- * Servlet implementation class AddScoreServlet
+ * Servlet implementation class AddHotServlet
  */
-public class AddCleanerServlet extends HttpServlet {
+public class AddHotServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public AddCleanerServlet() {
+    public AddHotServlet() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -42,7 +45,7 @@ public class AddCleanerServlet extends HttpServlet {
 		request.setCharacterEncoding("utf-8");
 		response.setContentType("text/html;charset=utf-8");
 
-		String p = this.getServletContext().getRealPath("homemaking");
+		String p = this.getServletContext().getRealPath("mall");
 		System.out.println(p);
 		// 用smartupload获得上传文件
 
@@ -53,8 +56,7 @@ public class AddCleanerServlet extends HttpServlet {
 
 			smartUpload.upload();
 			// 放图片的文件夹
-			String realPath = this.getServletContext()
-					.getRealPath("homemaking");
+			String realPath = this.getServletContext().getRealPath("mall");
 			System.out.println(realPath);
 			File dir = new File(realPath);
 
@@ -67,44 +69,31 @@ public class AddCleanerServlet extends HttpServlet {
 			if (!poster.isMissing()) {
 				String path = request.getServletContext().getRealPath("/");
 				// poster.getFileName() 原文件名
-				File file = new File(getServletContext().getRealPath(
-						"homemaking"), poster.getFileName());
+				File file = new File(getServletContext().getRealPath("mall"),
+						poster.getFileName());
 				String saveFileName = file.getAbsolutePath();
 				// 文件保存路径
 				poster.saveAs(saveFileName);
-				poster.saveAs(path + "homemaking/" + "cleaner"+poster.getFileName());
-			}			// 将头像信息保存到数据库
-			String name = smartUpload.getRequest().getParameter("name");
-			String phone = smartUpload.getRequest().getParameter("phone");
-			String sex = smartUpload.getRequest().getParameter("sex");
-			String age = smartUpload.getRequest().getParameter("age");
-			String marrysta = smartUpload.getRequest().getParameter("marrysta");
-			String sign = smartUpload.getRequest().getParameter("sign");
-			String intro = smartUpload.getRequest().getParameter("intro");
+				poster.saveAs(path + "mall/" + "hot" + poster.getFileName());
+			} // 将头像信息保存到数据库
+			String title = smartUpload.getRequest().getParameter("title");
+			String sid = smartUpload.getRequest().getParameter("sid");
 
-			CleanerEntity cleaner = new CleanerEntity();
-			cleaner.setName(name);
-			cleaner.setPhone(phone);
-			cleaner.setHead("homemaking/" + "cleaner"+poster.getFileName());
-			cleaner.setSex(Integer.parseInt(sex));
-			cleaner.setAge(Integer.parseInt(age));
-			cleaner.setMarrysta(Integer.parseInt(marrysta));
-			cleaner.setSign(sign);
-			cleaner.setIntro(intro);
-			cleaner.setState(0);
+			Hot hot = new Hot();
+			hot.setTitle(title);
+			hot.setShop(new ShopDao().getShopBySid(Integer.parseInt(sid)));
+			hot.setImg("mall/" + "hot" + poster.getFileName());
 
-			CleanerService service = new CleanerService();
-			if (service.save(cleaner)) {
-				request.setAttribute("cleaners",
-						new CleanerService().getCleaner());
-				request.getRequestDispatcher("/list_cleaners.jsp").forward(
+			HotService service = new HotService();
+			if (service.save(hot)) {
+				request.setAttribute("hots", new HotService().getHots());
+				request.getRequestDispatcher("/list_hots.jsp").forward(
 						request, response);
 			}
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-
 	}
 
 }

@@ -5,7 +5,7 @@
 <html>
 <head>
 <meta charset="utf-8" />
-<title>家政服务后台管理系统</title>
+<title>电脑配件管理后台</title>
 <meta name="author" content="DeathGhost" />
 <link rel="stylesheet" type="text/css" href="css/style.css" />
 <!--[if lt IE 9]>
@@ -37,7 +37,7 @@
 
 		} else {
 			var oForm = document.getElementsByName("frmAction")[0];
-			oForm.action = "/Mall/DeleteCleanerServlet";
+			oForm.action = "/Mall/DeleteHotServlet";
 			oForm.submit();
 		}
 	}
@@ -55,7 +55,7 @@
 			alert("请选择一个员工！");
 		} else {
 			var oForm = document.getElementsByName("frmAction")[0];
-			oForm.action = "/Mall/ShowCleanerServlet";
+			oForm.action = "/Mall/ShowHotServlet";
 			oForm.submit();
 		}
 	}
@@ -112,10 +112,13 @@
 							<a href="/Mall/ListUserServlet" class="active">用户列表</a>
 						</dd>
 						<dd>
-							<a href="/Mall/ListServersServlet" class="active">服务列表</a>
+							<a href="/Mall/ListShopsServlet" class="active">商品列表</a>
 						</dd>
 						<dd>
-							<a href="/Mall/ListCleanersServlet" class="active">员工列表</a>
+							<a href="/Mall/ListRecomsServlet" class="active">推荐商品</a>
+						</dd>
+						<dd>
+							<a href="/Mall/ListHotsServlet" class="active">热门商品</a>
 						</dd>
 						<dd>
 							<a href="/Mall/ListOrdersServlet" class="active">订单列表</a>
@@ -161,10 +164,10 @@
 				</script>
 
 				<section>
-					<button class="link_btn" id="loading" onclick="del()">删除员工</button>
+					<button class="link_btn" id="loading" onclick="del()">删除热门商品</button>
 					<button class="link_btn" id="loading"
-						onclick="window.location.href='add_cleaner.html'">增加服务</button>
-					<button class="link_btn" id="loading" onclick="change()">修改服务</button>
+						onclick="window.location.href='add_hot.html'">增加热门商品</button>
+					<button class="link_btn" id="loading" onclick="change()">修改热门商品</button>
 				</section>
 				<section></section>
 				<section>
@@ -173,30 +176,18 @@
 							<td><input type="checkBox" name="chkAll"
 								onClick="selectAll()" /></td>
 							<td align='center'>id</td>
-							<td>名字</td>
-							<td>头像</td>
-							<td>电话</td>
-							<td>年龄</td>
-							<td>性别</td>
-							<td>婚姻</td>
-							<td>签名</td>
-							<td>介绍</td>
-							<td>状态</td>
+							<td align='center'>商品id</td>
+							<td>标题</td>
+							<td>图片</td>
 						</tr>
-						<c:forEach var="cleaner" items="${cleaners}">
+						<c:forEach var="hot" items="${hots}">
 							<tr class='even'>
 								<td align='center'><input type='checkbox'
-									name='chkCleaners' value='${cleaner.cid}'></td>
-								<td align='center'><c:out value="${cleaner.cid}"></c:out></td>
-								<td align=center><c:out value="${cleaner.name}"></c:out></td>
-								<td align=center><c:out value="${cleaner.head}"></c:out></td>
-								<td align=center><c:out value="${cleaner.phone}"></c:out></td>
-								<td align=center><c:out value="${cleaner.age}"></c:out></td>
-								<td align=center><c:out value="${cleaner.sex}"></c:out></td>
-								<td align=center><c:out value="${cleaner.marrysta}"></c:out></td>
-								<td align=center><c:out value="${cleaner.sign}"></c:out></td>
-								<td align=center><c:out value="${cleaner.intro}"></c:out></td>
-								<td align=center><c:out value="${cleaner.state}"></c:out></td>
+									name='chkCleaners' value="${hot.hid}"></td>
+								<td align='center'><c:out value="${hot.hid}"></c:out></td>
+								<td align='center'><c:out value="${hot.shop.sid}"></c:out></td>
+								<td align=center><c:out value="${hot.title}"></c:out></td>
+								<td align=center><c:out value="${hot.img}"></c:out></td>
 							</tr>
 						</c:forEach>
 
