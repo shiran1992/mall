@@ -92,8 +92,6 @@ public class ChangeShopServlet extends HttpServlet {
 			shop.setNum(Integer.parseInt(num));
 			shop.setHead("mall/" + "shop"+poster.getFileName());
 			shop.setIntro(intro);
-			
-			System.out.println("////////////"+shop.toString());
 
 			ShopService service = new ShopService();
 			if (service.update(shop)) {

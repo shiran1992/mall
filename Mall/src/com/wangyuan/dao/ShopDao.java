@@ -196,16 +196,15 @@ public class ShopDao {
 		PreparedStatement prep = null;
 		try {
 			conn = DBConnection.getConnection();
-			String sql = "UPDATE shop SET title=?,head=?,price=?,imgs=?,intro=?,num=?,video=? WHERE sid=?";
+			String sql = "UPDATE shop SET title=?,price=?,imgs=?,intro=?,num=?,video=? WHERE sid=?";
 			prep = conn.prepareStatement(sql);
 			prep.setString(1, shop.getTitle());
-			prep.setString(2, shop.getHead());
-			prep.setString(3, shop.getPrice());
-			prep.setString(4, shop.getImgs());
-			prep.setString(5, shop.getIntro());
-			prep.setInt(6, shop.getNum());
-			prep.setString(7, shop.getVideo());
-			prep.setInt(8, shop.getSid());
+			prep.setString(2, shop.getPrice());
+			prep.setString(3, shop.getImgs());
+			prep.setString(4, shop.getIntro());
+			prep.setInt(5, shop.getNum());
+			prep.setString(6, shop.getVideo());
+			prep.setInt(7, shop.getSid());
 			prep.executeUpdate();
 
 		} catch (Exception e) {

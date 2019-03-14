@@ -83,6 +83,7 @@ public class ChangeHotServlet extends HttpServlet {
 			Hot hot = new Hot();
 			hot.setHid(Integer.parseInt(hid));
 			hot.setTitle(title);
+			hot.setImg("");
 			hot.setShop(new ShopDao().getShopBySid(Integer.parseInt(sid)));
 
 			HotService service = new HotService();

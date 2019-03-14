@@ -86,6 +86,7 @@ public class ChangeRecomServlet extends HttpServlet {
 			Recom recom = new Recom();
 			recom.setRid(Integer.parseInt(rid));
 			recom.setTitle(title);
+			recom.setImg("");
 			recom.setShop(new ShopDao().getShopBySid(Integer.parseInt(sid)));
 
 			RecomService service = new RecomService();

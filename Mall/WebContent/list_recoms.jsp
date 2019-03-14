@@ -33,7 +33,7 @@
 			}
 		}
 		if (checkcount == 0) {
-			alert("请至少选择一个用户！");
+			alert("请至少选择一个选项！");
 
 		} else {
 			var oForm = document.getElementsByName("frmAction")[0];
@@ -52,7 +52,7 @@
 			}
 		}
 		if (checkcount == 0 || checkcount > 1) {
-			alert("请选择一个员工！");
+			alert("请至少选择一个选项！");
 		} else {
 			var oForm = document.getElementsByName("frmAction")[0];
 			oForm.action = "/Mall/ShowRecomServlet";

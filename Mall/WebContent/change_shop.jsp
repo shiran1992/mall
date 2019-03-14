@@ -33,11 +33,11 @@
 			}
 		}
 		if (checkcount == 0) {
-			alert("请至少选择一个用户！");
+			alert("请至少选择一个选项！");
 
 		} else {
 			var oForm = document.getElementsByName("frmAction")[0];
-			oForm.action = "/HomeMaking/DeleteServerServlet";
+			oForm.action = "/Mall/DeleteServerServlet";
 			oForm.submit();
 		}
 	}
@@ -52,10 +52,10 @@
 			}
 		}
 		if (checkcount == 0 || checkcount > 1) {
-			alert("请选择一个用户！");
+			alert("请至少选择一个选项！");
 		}else {
 			var oForm = document.getElementsByName("frmAction")[0];
-			oForm.action = "/HomeMaking/ShowServerServlet";
+			oForm.action = "/Mall/ShowServerServlet";
 			oForm.submit();
 		}
 	}

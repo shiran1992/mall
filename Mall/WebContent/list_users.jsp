@@ -33,7 +33,7 @@
 			}
 		}
 		if (checkcount == 0) {
-			alert("请至少选择一个用户！");
+			alert("请至少选择一个选项！！");
 
 		} else {
 			var oForm = document.getElementsByName("frmAction")[0];
