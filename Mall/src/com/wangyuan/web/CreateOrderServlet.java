@@ -46,10 +46,10 @@ public class CreateOrderServlet extends HttpServlet {
 
 		int uid = Integer.parseInt(request.getParameter("uid"));
 		int sid = Integer.parseInt(request.getParameter("sid"));
-		String allprice = request.getParameter("allprice");
-		String server_time = request.getParameter("server_time");
+		String address = request.getParameter("address");
+		String phone = request.getParameter("phone");
 		OrderService service = new OrderService();
-		boolean issuccess = service.save(uid, sid, allprice, server_time);
+		boolean issuccess = service.save(uid, sid, address, phone);
 		if(issuccess){
 			response.getWriter().write("true");
 		}else{

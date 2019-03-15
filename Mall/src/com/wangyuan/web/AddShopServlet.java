@@ -68,7 +68,7 @@ public class AddShopServlet extends HttpServlet {
 				String saveFileName = file.getAbsolutePath();
 				// 文件保存路径
 				poster.saveAs(saveFileName);
-				poster.saveAs(path + "mall/" + poster.getFileName());
+				poster.saveAs(path + "mall/" + "shop" +poster.getFileName());
 			}			// 将头像信息保存到数据库
 			String title = smartUpload.getRequest().getParameter("title");
 			String intro = smartUpload.getRequest().getParameter("intro");

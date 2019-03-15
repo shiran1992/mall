@@ -39,10 +39,9 @@ public class GetRecomServlet extends HttpServlet {
 		// TODO Auto-generated method stub
 		request.setCharacterEncoding("utf-8");
 		response.setContentType("text/html;charset=utf-8");
-		int page = Integer.parseInt(request.getParameter("page"));
 		RecomService service = new RecomService();
 		Gson gson = new Gson();
-		response.getWriter().write(gson.toJson(service.getRecomByPage(page)));
+		response.getWriter().write(gson.toJson(service.getRecomByPage(0)));
 	}
 
 }

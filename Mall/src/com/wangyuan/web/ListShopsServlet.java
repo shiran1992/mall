@@ -38,7 +38,7 @@ public class ListShopsServlet extends HttpServlet {
 		request.setCharacterEncoding("utf-8");
 		response.setContentType("text/html;charset=utf-8");
 		
-		request.setAttribute("shops", new ShopService().getShopsByPage());
+		request.setAttribute("shops", new ShopService().getShops());
 		request.getRequestDispatcher("/list_shops.jsp").
 		forward(request, response);
 	}

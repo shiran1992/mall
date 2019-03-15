@@ -15,8 +15,8 @@ public class ShopService {
 	}
 
 	// 获取所有的server
-	public List<Shop> getShopsByPage() {
-		return dao.getShopsByPage();
+	public List<Shop> getShops() {
+		return dao.getShops();
 	}
 
 	// 创建服务

@@ -62,7 +62,7 @@ public class ShopDao {
 	}
 
 	// 获取所有的shop
-	public List<Shop> getShopsByPage() {
+	public List<Shop> getShops() {
 		Connection conn = null;
 		PreparedStatement prep = null;
 		ResultSet rs = null;

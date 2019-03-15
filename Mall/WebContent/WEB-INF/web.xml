@@ -21,13 +21,13 @@
   </servlet-mapping>
   <servlet>
     <description></description>
-    <display-name>CommonServerServlet</display-name>
-    <servlet-name>CommonServerServlet</servlet-name>
-    <servlet-class>com.wangyuan.web.CommonServerServlet</servlet-class>
+    <display-name>AddToCarServlet</display-name>
+    <servlet-name>AddToCarServlet</servlet-name>
+    <servlet-class>com.wangyuan.web.AddToCarServlet</servlet-class>
   </servlet>
   <servlet-mapping>
-    <servlet-name>CommonServerServlet</servlet-name>
-    <url-pattern>/CommonServerServlet</url-pattern>
+    <servlet-name>AddToCarServlet</servlet-name>
+    <url-pattern>/AddToCarServlet</url-pattern>
   </servlet-mapping>
   <servlet>
     <description></description>
@@ -61,23 +61,23 @@
   </servlet-mapping>
   <servlet>
     <description></description>
-    <display-name>ForgetPasswordServlet</display-name>
-    <servlet-name>ForgetPasswordServlet</servlet-name>
-    <servlet-class>com.wangyuan.web.ForgetPasswordServlet</servlet-class>
+    <display-name>GetShopServlet</display-name>
+    <servlet-name>GetShopServlet</servlet-name>
+    <servlet-class>com.wangyuan.web.GetShopServlet</servlet-class>
   </servlet>
   <servlet-mapping>
-    <servlet-name>ForgetPasswordServlet</servlet-name>
-    <url-pattern>/ForgetPasswordServlet</url-pattern>
+    <servlet-name>GetShopServlet</servlet-name>
+    <url-pattern>/GetShopServlet</url-pattern>
   </servlet-mapping>
   <servlet>
     <description></description>
-    <display-name>IsRigesterServlet</display-name>
-    <servlet-name>IsRigesterServlet</servlet-name>
-    <servlet-class>com.wangyuan.web.IsRigesterServlet</servlet-class>
+    <display-name>GetCarServlet</display-name>
+    <servlet-name>GetCarServlet</servlet-name>
+    <servlet-class>com.wangyuan.web.GetCarServlet</servlet-class>
   </servlet>
   <servlet-mapping>
-    <servlet-name>IsRigesterServlet</servlet-name>
-    <url-pattern>/IsRigesterServlet</url-pattern>
+    <servlet-name>GetCarServlet</servlet-name>
+    <url-pattern>/GetCarServlet</url-pattern>
   </servlet-mapping>
   <servlet>
     <description></description>
@@ -151,13 +151,13 @@
   </servlet-mapping>
   <servlet>
     <description></description>
-    <display-name>GetServersByCleanerIdServlet</display-name>
-    <servlet-name>GetServersByCleanerIdServlet</servlet-name>
-    <servlet-class>com.wangyuan.web.GetServersByCleanerIdServlet</servlet-class>
+    <display-name>GetShopBySidServlet</display-name>
+    <servlet-name>GetShopBySidServlet</servlet-name>
+    <servlet-class>com.wangyuan.web.GetShopBySidServlet</servlet-class>
   </servlet>
   <servlet-mapping>
-    <servlet-name>GetServersByCleanerIdServlet</servlet-name>
-    <url-pattern>/GetServersByCleanerIdServlet</url-pattern>
+    <servlet-name>GetShopBySidServlet</servlet-name>
+    <url-pattern>/GetShopBySidServlet</url-pattern>
   </servlet-mapping>
   <servlet>
     <description></description>
@@ -378,5 +378,15 @@
   <servlet-mapping>
     <servlet-name>DeleteHotServlet</servlet-name>
     <url-pattern>/DeleteHotServlet</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>GetHotServlet</display-name>
+    <servlet-name>GetHotServlet</servlet-name>
+    <servlet-class>com.wangyuan.web.GetHotServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>GetHotServlet</servlet-name>
+    <url-pattern>/GetHotServlet</url-pattern>
   </servlet-mapping>
 </web-app>
