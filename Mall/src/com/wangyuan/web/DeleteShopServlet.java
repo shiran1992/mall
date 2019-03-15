@@ -41,9 +41,7 @@ public class DeleteShopServlet extends HttpServlet {
 		String[] ids =request.getParameterValues("chkServers");
 		ShopService service = new ShopService();
 		if(service.deleteShopBySid(Integer.parseInt(ids[0]))){
-			request.setAttribute("shops", new ShopService().getShopsByPage());
-			request.getRequestDispatcher("/list_shops.jsp").
-			forward(request, response);
+			response.sendRedirect(request.getContextPath()+"/ListShopsServlet"); 
 		}
 	}
 

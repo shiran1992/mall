@@ -95,10 +95,7 @@ public class ChangeShopServlet extends HttpServlet {
 
 			ShopService service = new ShopService();
 			if (service.update(shop)) {
-				request.setAttribute("shops",
-						new ShopService().getShopsByPage());
-				request.getRequestDispatcher("/list_shops.jsp").forward(
-						request, response);
+				response.sendRedirect(request.getContextPath()+"/ListShopsServlet"); 
 			}
 		} catch (Exception e) {
 			// TODO Auto-generated catch block

@@ -41,9 +41,7 @@ public class DeleteRecomServlet extends HttpServlet {
 		String[] ids =request.getParameterValues("chkCleaners");
 		RecomService service = new RecomService();
 		if(service.deleteRecomByRid(Integer.parseInt(ids[0]))){
-			request.setAttribute("recoms", new RecomService().getRecoms());
-			request.getRequestDispatcher("/list_recoms.jsp").
-			forward(request, response);
+			response.sendRedirect(request.getContextPath()+"/ListRecomsServlet"); 
 		}
 	}
 }

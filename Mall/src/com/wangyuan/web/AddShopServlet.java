@@ -86,10 +86,7 @@ public class AddShopServlet extends HttpServlet {
 			ShopService service = new ShopService();
 			Boolean flag = service.save(shop);
 			if (flag) {
-				request.setAttribute("shops",
-						new ShopService().getShopsByPage());
-				request.getRequestDispatcher("/list_shops.jsp").forward(
-						request, response);
+				response.sendRedirect(request.getContextPath()+"/ListShopsServlet"); 
 			}
 		} catch (Exception e) {
 			// TODO Auto-generated catch block

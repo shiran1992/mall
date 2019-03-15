@@ -88,9 +88,7 @@ public class ChangeHotServlet extends HttpServlet {
 
 			HotService service = new HotService();
 			if (service.update(hot)) {
-				request.setAttribute("hots", service.getHots());
-				request.getRequestDispatcher("/list_hots.jsp").forward(
-						request, response);
+				response.sendRedirect(request.getContextPath()+"/ListHotsServlet"); 
 			}
 		} catch (Exception e) {
 			// TODO Auto-generated catch block

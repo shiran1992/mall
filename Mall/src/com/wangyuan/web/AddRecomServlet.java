@@ -88,9 +88,7 @@ public class AddRecomServlet extends HttpServlet {
 
 			RecomService service = new RecomService();
 			if (service.save(recom)) {
-				request.setAttribute("recoms", new RecomService().getRecoms());
-				request.getRequestDispatcher("/list_recoms.jsp").forward(
-						request, response);
+				response.sendRedirect(request.getContextPath()+"/ListRecomsServlet"); 
 			}
 		} catch (Exception e) {
 			// TODO Auto-generated catch block

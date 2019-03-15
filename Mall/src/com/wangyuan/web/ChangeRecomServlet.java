@@ -91,9 +91,7 @@ public class ChangeRecomServlet extends HttpServlet {
 
 			RecomService service = new RecomService();
 			if (service.update(recom)) {
-				request.setAttribute("recoms", new RecomService().getRecoms());
-				request.getRequestDispatcher("/list_recoms.jsp").forward(
-						request, response);
+				response.sendRedirect(request.getContextPath()+"/ListRecomsServlet"); 
 			}
 		} catch (Exception e) {
 			// TODO Auto-generated catch block

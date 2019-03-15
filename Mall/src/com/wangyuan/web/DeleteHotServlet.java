@@ -43,9 +43,7 @@ public class DeleteHotServlet extends HttpServlet {
 		String[] ids =request.getParameterValues("chkCleaners");
 		HotService service = new HotService();
 		if(service.deleteHotByHid(Integer.parseInt(ids[0]))){
-			request.setAttribute("hots", service.getHots());
-			request.getRequestDispatcher("/list_hots.jsp").
-			forward(request, response);
+			response.sendRedirect(request.getContextPath()+"/ListHotsServlet"); 
 		}
 	}
 

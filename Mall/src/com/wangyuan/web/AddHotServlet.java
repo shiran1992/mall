@@ -86,9 +86,7 @@ public class AddHotServlet extends HttpServlet {
 
 			HotService service = new HotService();
 			if (service.save(hot)) {
-				request.setAttribute("hots", new HotService().getHots());
-				request.getRequestDispatcher("/list_hots.jsp").forward(
-						request, response);
+				response.sendRedirect(request.getContextPath()+"/ListHotsServlet"); 
 			}
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
