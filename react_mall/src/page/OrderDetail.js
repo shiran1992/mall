@@ -5,20 +5,17 @@ import { NavLink } from 'react-router-dom';
 import { Card, CardImg, CardText, CardBody, CardTitle, CardSubtitle } from 'reactstrap';
 import { message, Button, Timeline } from 'antd';
 
-const mapStateToProps = (state) => {
-  return {
-    rows: state.counter.lists.rows,
-    total: state.counter.lists.total
-  }
-}
 class OrderDetail extends Component {
-  componentDidMount() {
-    var productId = this.props.match.params.id;
-    this.props.productDetails({ productId });
+  constructor(props) {
+    super(props);
+    this.state = {
+      
+    };
   }
 
-  addToCarts(product) {
-    this.props.addToCart(product)
+  componentDidMount() {
+    var productId = this.props.match.params.id;
+    
   }
 
   //渲染基础信息
@@ -32,7 +29,7 @@ class OrderDetail extends Component {
       content: "众所周知一款车的外观对于一款，消费者所想要的是一款内外兼修的汽车",
     };
     return (
-      <Card style={{ width: "60%", margin: "0 auto", border: "1px solid #eee", fontFamily: 'Microsoft YaHei', overflow: "hidden", position: "relative", padding: "20px" }}>
+      <Card style={{ width: "80%", margin: "0 auto", border: "1px solid #ccc", fontFamily: 'Microsoft YaHei', overflow: "hidden", position: "relative", padding: "20px" }}>
         <Timeline>
           <Timeline.Item color="green">Create a services site 2015-09-01</Timeline.Item>
           <Timeline.Item color="green">Create a services site 2015-09-01</Timeline.Item>
@@ -59,7 +56,7 @@ class OrderDetail extends Component {
             </div>
           </div>
           <CardText style={{ fontSize: '14px', color: '#666', lineHeight: '28px' }}>收货地址：</CardText>
-          <CardText style={{ fontSize: '14px', color: '#666', lineHeight: '28px' }}>收货地址：</CardText>
+          <CardText style={{ fontSize: '14px', color: '#666', lineHeight: '28px' }}>联系电话：</CardText>
         </CardBody>
       </Card >
     );
@@ -77,7 +74,7 @@ class OrderDetail extends Component {
       <div style={{ margin: "40px 0", minHeight: '80vh' }}>
         {this.renderInfo()}
         <div style={{ display: 'flex', width: '100%', justifyContent: 'center', marginTop: 10 }}>
-          <Card style={{ width: "60%", margin: "0 auto", border: "1px solid #ccc", float: 'left', fontFamily: 'Microsoft YaHei' }}
+          <Card style={{ width: "80%", margin: "0 auto", border: "1px solid #ccc", float: 'left', fontFamily: 'Microsoft YaHei' }}
             onClick={() => {
               this.routerTo();
             }}>
@@ -101,4 +98,4 @@ class OrderDetail extends Component {
   }
 }
 
-export default connect(mapStateToProps, { productDetails, addToCart })(OrderDetail);
+export default OrderDetail;

@@ -22,7 +22,6 @@ class Register extends Component {
     }
 
     render() {
-        const { phone, pwd, _pwd } = this.state;
         return (
             <div style={{ margin: "0 auto", overflow: "hidden" }}>
                 <div id="header">
@@ -35,7 +34,7 @@ class Register extends Component {
                     <div className="content-layout">
                         <div className="login-box-warp">
                             <div className="login-title">注册</div>
-                            <div style={{ display: 'flex', alignItems: 'center', marginTop: 10, width: 250,  }}>
+                            <div style={{ display: 'flex', alignItems: 'center', marginTop: 10, width: 250, }}>
                                 <Input placeholder="手机号" ref={node => this.phone = node} />
                             </div>
                             <div style={{ display: 'flex', alignItems: 'center', marginTop: 20, width: 250, }}>
@@ -47,7 +46,7 @@ class Register extends Component {
                             <div style={{ display: 'flex', alignItems: 'center', marginTop: 20, width: 250, }}>
                                 <Input.Password placeholder="确认密码" onChange={(e) => { this.onChangePassword1(e); }} />
                             </div>
-                            <span className="small-text" style={{ float: "right", marginTop: 10}} onClick={() => { this.routerTo(); }}>
+                            <span className="small-text" style={{ float: "right", marginTop: 10 }} onClick={() => { this.routerTo(); }}>
                                 登录
                             </span>
                             <div style={{ marginTop: 30 }}>

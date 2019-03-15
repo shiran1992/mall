@@ -1,63 +1,33 @@
 import React, { Component } from 'react';
-import { connect } from 'react-redux';
 import { UncontrolledCarousel, Card, CardImg } from 'reactstrap';
 import { NavLink } from 'react-router-dom';
 import { Button } from 'antd';
 
-
-const mapStateToProps = (state) => {
-  return {
-    carts: state.carts,
-  }
-}
-
 class OrderList extends Component {
   constructor(props) {
     super(props);
-    this.state = { value: [] };
-    this.handleChange = this.handleChange.bind(this);
+    this.state = {
+      value: []
+    };
   }
 
-  handleChange(event) {
-    if (event.target.value == -1) {
-      if (event.target.checked == true) {
-        let items = this.state.value;
-        items = [];
-        var arr = this.props.carts;
-        for (var i = 0; i < arr.length; i++) {
-          var arrId = arr[i].checked;
-          this.setState({ arrId: true });
-          items.push('' + arr[i].id + '')
-        }
+  componentDidMount() {
+    let sid = this.props.match.params.id;
+    this.getOrderList(sid)
+  }
 
-        this.setState({ value: items });
-      } else {
-
-      }
-
-    } else {
-      let item = event.target.value;
-      let items = this.state.value.slice();
-
-      let index = items.indexOf(item);
-      index === -1 ? items.push(item) : items.splice(index, 1);
-      this.setState({ value: items });
-      console.log(items);
+  //获取商品详情
+  async getShopInfo(sid) {
+    let shop = await API("GetShopBySidServlet", { sid: sid }, { method: "get" });
+    if (shop) {
+      this.setState({
+        shop: shop
+      });
     }
-  }
-
-
-  showInput = (e) => {//全选和全不全
-    console.log(e.target.checked);
-    this.setState({
-      check: e.target.checked,
-      checks: e.target.checked,
-    })
   }
 
   //商品列表
   renderShopList() {
-
     var lst = [
       {
         img: "https://img1.360buyimg.com/pop/jfs/t1/10125/1/9402/107191/5c419222E3b8b26dd/e7994eb9583e6166.jpg",
@@ -118,21 +88,20 @@ class OrderList extends Component {
               </div>
             </div>
             <div style={{ flex: 1 }} />
-            <div style={{display: 'flex', flexDirection: 'column'}}>
+            <div style={{ display: 'flex', flexDirection: 'column' }}>
               <span style={{ fontSize: 18, fontWeight: 700, marginBottom: 20 }}>交易成功</span>
-              <span className="small-text" onClick={()=>{this.routerTo();}}>查看订单</span>
+              <span className="small-text" onClick={() => { this.routerTo(); }}>查看订单</span>
             </div>
           </div>
         </Card>
       );
     }
     return jsx;
-
   }
 
   render() {
     return (
-      <div style={{ display: 'flex', width: 1200, flexDirection: 'column', margin: '0 auto', minHeight: '100vh' }}>
+      <div style={{ display: 'flex', width: 1200, flexDirection: 'column', margin: '0 auto', minHeight: '100vh', alignItems: 'center' }}>
         {this.renderShopList()}
       </div>
     )
@@ -144,4 +113,4 @@ class OrderList extends Component {
   }
 }
 
-export default connect(mapStateToProps)(OrderList);
+export default OrderList;

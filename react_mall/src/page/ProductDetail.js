@@ -52,7 +52,7 @@ class ProductDetail extends Component {
             <Button type="danger" block onClick={() => this.addToCarts(data)} style={{ width: 100, marginLeft: 50 }}>去付款</Button>
           </div>
         </CardBody>
-      </Card >
+      </Card>
     );
   }
 
@@ -67,7 +67,7 @@ class ProductDetail extends Component {
     ];
     let imgs = imgUrls.map((e, i) => {
       return (
-        <img src={e} />
+        <img key={i} src={e} />
       );
     })
     return imgs;
