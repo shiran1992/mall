@@ -15,8 +15,8 @@ public class OrderService {
 	}
 
 	// 我的订单
-	public List<Order> getPageOrders(int uid, int page) {
-		return dao.getPageOrders(uid, page);
+	public List<Order> getPageOrders(int uid) {
+		return dao.getPageOrders(uid);
 	}
 
 	// 获取订单集合

@@ -1,11 +1,13 @@
 package com.wangyuan.web;
 
 import java.io.IOException;
+import java.net.URLDecoder;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+
 import com.wangyuan.service.OrderService;
 
 
@@ -42,7 +44,8 @@ public class CreateOrderServlet extends HttpServlet {
 			HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		request.setCharacterEncoding("utf-8");
-		response.setContentType("text/html;charset=utf-8");
+		response.setCharacterEncoding("utf-8");
+		response.setContentType("text/html;charset=UTF-8");
 
 		int uid = Integer.parseInt(request.getParameter("uid"));
 		int sid = Integer.parseInt(request.getParameter("sid"));

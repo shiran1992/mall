@@ -43,12 +43,11 @@ public class GetOrdersServlet extends HttpServlet {
 		request.setCharacterEncoding("utf-8");
 		response.setContentType("text/html;charset=utf-8");
 		int uid = Integer.parseInt(request.getParameter("uid"));
-		int page = Integer.parseInt(request.getParameter("page"));
 
 		OrderService service = new OrderService();
 		Gson gson = new Gson();
 		response.getWriter().write(
-				gson.toJson(service.getPageOrders(uid, page)));
+				gson.toJson(service.getPageOrders(uid)));
 	}
 
 }

@@ -54,7 +54,7 @@ public class OrderDao {
 	}
 
 	// 分页获取活动集合
-	public List<Order> getPageOrders(int uid, int page) {
+	public List<Order> getPageOrders(int uid) {
 		Connection conn = null;
 		PreparedStatement prep = null;
 		ResultSet rs = null;
@@ -63,12 +63,10 @@ public class OrderDao {
 			// 1、联数据库
 			conn = DBConnection.getConnection();
 			// 2、SQL语句
-			String sql = "select * from orders where uid=? order by oid desc limit ?,?";
+			String sql = "select * from orders where uid=? order by oid desc";
 			// 3、获得PreparedStatement对象
 			prep = conn.prepareStatement(sql);
 			prep.setInt(1, uid);
-			prep.setInt(2, Application.activities_pagecount * page);
-			prep.setInt(3, Application.activities_pagecount);
 			// 5、执行SQL语句
 			rs = prep.executeQuery();
 			// 6、处理查询结果，
