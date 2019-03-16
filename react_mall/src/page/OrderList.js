@@ -2,28 +2,35 @@ import React, { Component } from 'react';
 import { UncontrolledCarousel, Card, CardImg } from 'reactstrap';
 import { NavLink } from 'react-router-dom';
 import { Button } from 'antd';
+import API from "../utils/API";
+const Util = require("../Utils/util");
 
 class OrderList extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      value: []
+      orders: []
     };
   }
 
   componentDidMount() {
-    let sid = this.props.match.params.id;
-    this.getOrderList(sid)
+    this.getOrderList()
   }
 
-  //获取商品详情
-  async getShopInfo(sid) {
-    let shop = await API("GetShopBySidServlet", { sid: sid }, { method: "get" });
-    if (shop) {
-      this.setState({
-        shop: shop
-      });
-    }
+  //获取订单列表
+  async getOrderList() {
+    Util.isLogined((user) => {
+      if (user.uid) {
+        API("GetOrdersServlet", { uid: user.uid }, { method: "get" }).then((data) => {
+          console.log("****", data);
+          if (data) {
+            this.setState({
+              orders: data
+            })
+          }
+        });
+      }
+    }, this);
   }
 
   //商品列表

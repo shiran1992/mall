@@ -3,12 +3,12 @@ import { Input, Button, message } from 'antd';
 import { Card, CardImg } from 'reactstrap';
 import BaseConfig from "../config/BaseConfig";
 import API from "../utils/API";
+const Util = require("../Utils/util");
 
 class Payment extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            pwd: "",
             shop: {}
         }
     }
@@ -26,10 +26,6 @@ class Payment extends Component {
                 shop: shop
             });
         }
-    }
-
-    onChangePassword(e) {
-        this.setState({ pwd: e.target.value });
     }
 
     render() {
@@ -60,16 +56,16 @@ class Payment extends Component {
                         付款金额：<span style={{ fontSize: 18, fontWeight: 700, color: '#F40' }}>{data.price}元</span>
                     </div>
                     <div style={{ display: 'flex', height: 50, alignItems: 'center' }}>
-                        收货地址：<span style={{ fontSize: 18, fontWeight: 700, color: '#F40' }}>{data.price}元</span>
+                        收货地址：<Input style={{ width: 300 }} placeholder="" ref={node => this.address = node} />
                     </div>
                     <div style={{ display: 'flex', height: 50, alignItems: 'center' }}>
-                        联系电话：<span style={{ fontSize: 18, fontWeight: 700, color: '#F40' }}>{data.price}元</span>
+                        联系电话：<Input style={{ width: 200 }} placeholder="" ref={node => this.phone = node} />
                     </div>
                     <div style={{ display: 'flex', height: 50, alignItems: 'center' }}>
-                        付款密码：<Input.Password style={{ width: 200 }} placeholder="input password" onChange={(e) => { this.onChangePassword(e); }} />
+                        付款密码：<Input style={{ width: 200 }} placeholder="" placeholder="" ref={node => this.pwd = node} />
                     </div>
                     <Button type="primary" style={{ width: 100, marginTop: 20 }} onClick={() => {
-                        this.onClickPay();
+                        this.onClickPay(data);
                     }}>确认付款</Button>
                 </Card>
                 <div style={{ minHeight: '60vh' }}></div>
@@ -78,13 +74,38 @@ class Payment extends Component {
     }
 
     //确认付款
-    onClickPay() {
-        if (!this.state.pwd) {
+    onClickPay(shop) {
+        if (!this.address.state.value) {
+            message.error("收货地址不可以为空哦~");
+            return;
+        }
+        if (!this.phone.state.value) {
+            message.error("联系电话不可以为空哦~");
+            return;
+        }
+        if (!this.pwd.state.value) {
             message.error("密码不可以为空哦~");
             return;
         }
-        
-        //API("CreateOrderServlet", { sid: sid }, { method: "get" })
+        Util.isLogined((user) => {
+            if (this.pwd.state.value != user.password) {
+                message.error("密码不正确哦~");
+                return;
+            }
+            if (user.uid && shop.sid) {
+                API("CreateOrderServlet", {
+                    sid: shop.sid,
+                    uid: user.uid,
+                    address: this.address.state.value,
+                    phone: this.phone.state.value
+                }, { method: "get" }).then((data) => {
+                    if (data) {
+                        message.success("付款成功！");
+                        this.props.history.push({ pathname: `/orders`, state: { } });
+                    }
+                });
+            }
+        }, this);
     }
 }
 

@@ -22,7 +22,6 @@ class CarList extends Component {
     Util.isLogined((user) => {
       if (user.uid) {
         API("GetCarServlet", { uid: user.uid }, { method: "get" }).then((data) => {
-          console.log(data);
           if (data) {
             this.setState({
               cars: data

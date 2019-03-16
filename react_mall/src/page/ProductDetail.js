@@ -49,7 +49,7 @@ class ProductDetail extends Component {
           <CardSubtitle style={{ lineHeight: '22px', color: "#888", margin: '-6px 0 18px 0' }}>上架时间：{Util.formatTime(data.time)}</CardSubtitle>
           <div style={{ display: 'flex' }}>
             <Button type="primary" block onClick={() => this.addToCarts(data)} style={{ width: 100 }}>加入购物车</Button>
-            <Button type="danger" block onClick={() => this.addToCarts(data)} style={{ width: 100, marginLeft: 50 }}>去付款</Button>
+            <Button type="danger" block onClick={() => this.routerTo(data.sid)} style={{ width: 100, marginLeft: 50 }}>去付款</Button>
           </div>
         </CardBody>
       </Card>
@@ -99,6 +99,11 @@ class ProductDetail extends Component {
 
       }
     }, this);
+  }
+
+  //点击去付款
+  routerTo(sid) {
+    this.props.history.push({ pathname: '/pay/' + sid, state: { } });
   }
 }
 
