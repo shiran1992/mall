@@ -1,5 +1,5 @@
 let config = {
-    baseUrl: "http://localhost:3000/Mall/"
+    baseUrl: "http://localhost:8080/Mall/"
 }
 
 export default config;
